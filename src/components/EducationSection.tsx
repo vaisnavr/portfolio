@@ -87,14 +87,12 @@ export function EducationSection() {
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Logo - shown above text on mobile */}
-                  <div className="flex justify-center md:hidden">
-                    <div className="w-[120px] h-[60px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-2">
-                      <img
-                        src={edu.logo}
-                        alt={`${edu.school} logo`}
-                        className="max-h-[48px] max-w-[100px] object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                      />
-                    </div>
+                  <div className="flex justify-center md:hidden py-2">
+                    <img
+                      src={edu.logo}
+                      alt={`${edu.school} logo`}
+                      className="max-h-[70px] max-w-[120px] object-contain mix-blend-multiply group-hover:drop-shadow-[0_0_12px_hsl(var(--accent)/0.5)] group-hover:scale-105 transition-all duration-500"
+                    />
                   </div>
 
                   {/* Text content - 75% */}
