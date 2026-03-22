@@ -82,14 +82,12 @@ export function ExperienceSection() {
                   <div className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300">
                     <div className="flex flex-col md:flex-row gap-6">
                       {/* Logo - shown above text on mobile */}
-                      <div className="flex justify-center md:hidden">
-                        <div className="w-[160px] h-[80px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-3">
-                          <img
-                            src={exp.logo}
-                            alt={`${exp.company} logo`}
-                            className="max-h-[64px] max-w-[140px] object-contain group-hover:scale-105 transition-all duration-500"
-                          />
-                        </div>
+                      <div className="flex justify-center md:hidden py-2">
+                        <img
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          className="max-h-[70px] max-w-[120px] object-contain mix-blend-multiply group-hover:drop-shadow-[0_0_12px_hsl(var(--accent)/0.5)] group-hover:scale-105 transition-all duration-500"
+                        />
                       </div>
 
                       {/* Text content - 75% */}
