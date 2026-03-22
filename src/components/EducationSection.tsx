@@ -1,4 +1,6 @@
-import { GraduationCap, Award, BookOpen } from "lucide-react";
+import { Award, BookOpen } from "lucide-react";
+import logoUsc from "@/assets/logo-usc.png";
+import logoKiit from "@/assets/logo-kiit.png";
 
 const education = [
   {
@@ -6,6 +8,7 @@ const education = [
     school: "University of Southern California, Marshall School of Business",
     period: "2024 – 2026",
     gpa: "3.6/4.0",
+    logo: logoUsc,
     coursework: [
       "SQL & Python",
       "ETL & Data Warehousing",
@@ -19,6 +22,7 @@ const education = [
     school: "Kalinga Institute of Industrial Technology",
     period: "2018 – 2022",
     gpa: "9.2/10",
+    logo: logoKiit,
     coursework: [
       "Data Structures & Algorithms",
       "Database Management Systems",
@@ -79,13 +83,22 @@ export function EducationSection() {
             {education.map((edu, index) => (
               <div
                 key={index}
-                className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300"
+                className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300 group"
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <GraduationCap className="w-8 h-8 text-primary" />
+                <div className="flex flex-col md:flex-row gap-6">
+                  {/* Logo - shown above text on mobile */}
+                  <div className="flex justify-center md:hidden">
+                    <div className="w-[120px] h-[60px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-2">
+                      <img
+                        src={edu.logo}
+                        alt={`${edu.school} logo`}
+                        className="max-h-[48px] max-w-[100px] object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      />
+                    </div>
                   </div>
-                  <div className="flex-1">
+
+                  {/* Text content - 75% */}
+                  <div className="flex-[3]">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
                       <div>
                         <h3 className="font-display text-xl font-semibold text-foreground">
@@ -113,6 +126,17 @@ export function EducationSection() {
                           </span>
                         ))}
                       </div>
+                    </div>
+                  </div>
+
+                  {/* Logo - right side on desktop, 25% */}
+                  <div className="hidden md:flex flex-[1] items-center justify-center">
+                    <div className="w-[120px] h-[60px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-2">
+                      <img
+                        src={edu.logo}
+                        alt={`${edu.school} logo`}
+                        className="max-h-[48px] max-w-[100px] object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                      />
                     </div>
                   </div>
                 </div>

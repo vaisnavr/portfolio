@@ -1,4 +1,7 @@
 import { Award } from "lucide-react";
+import logoPacvue from "@/assets/logo-pacvue.png";
+import logoSprinklr from "@/assets/logo-sprinklr.png";
+import logoHighradius from "@/assets/logo-highradius.png";
 
 const experiences = [
   {
@@ -7,6 +10,7 @@ const experiences = [
     company: "Pacvue",
     period: "May 2025 – Aug 2025",
     location: "California",
+    logo: logoPacvue,
     highlights: [
       "Architected modular data models and analytics pipelines to drive business experimentation, leveraging Snowflake and Tableau to identify regional growth trends and provide strategic recommendations to executive stakeholders.",
       "Communicated time-series forecasting outputs and model assumptions on $100M+ in marketing spend into clear, data-backed recommendations for technical, non-technical, and executive stakeholders, improving KPI predictability.",
@@ -18,6 +22,7 @@ const experiences = [
     company: "Sprinklr",
     period: "Sep 2022 – Aug 2024",
     location: "India",
+    logo: logoSprinklr,
     highlights: [
       "Collaborated with regional and global clients to deliver 15+ high-impact dashboards, utilizing structured thinking to transform raw datasets into testable insights for market research and consumer behavior analysis.",
       "Managed end-to-end project lifecycles for enterprise partners, synthesizing complex compliance data to identify process optimization opportunities and drive the adoption of automated analytical assets.",
@@ -31,6 +36,7 @@ const experiences = [
     company: "HighRadius",
     period: "Jun 2021 – Sep 2022",
     location: "India",
+    logo: logoHighradius,
     highlights: [
       "Improved ERP data accuracy and operational efficiency by leading ingestion, transformation, and governance of data using advanced Microsoft Excel (VLOOKUP, VBA, PivotTables) to support enterprise ERP integrations.",
       "Spearheaded 7+ end-to-end Order-to-Cash implementations by gathering business requirements, conducting UAT, and deploying customized SaaS financial models within 3-month delivery timelines, while mentoring 5 interns.",
@@ -70,31 +76,58 @@ export function ExperienceSection() {
 
             <div className="space-y-8">
               {experiences.map((exp, index) => (
-                <div key={index} className="relative pl-0 md:pl-20">
+                <div key={index} className="relative pl-0 md:pl-20 group">
                   <div className="hidden md:flex absolute left-6 w-4 h-4 rounded-full bg-accent border-4 border-background shadow-sm" style={{ top: "1.5rem" }} />
                   
                   <div className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
-                      <div>
-                        <h3 className="font-display text-xl font-semibold text-foreground">
-                          {exp.title}
-                        </h3>
-                        <p className="text-accent font-medium">{exp.company}</p>
+                    <div className="flex flex-col md:flex-row gap-6">
+                      {/* Logo - shown above text on mobile */}
+                      <div className="flex justify-center md:hidden">
+                        <div className="w-[120px] h-[60px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-2">
+                          <img
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            className="max-h-[48px] max-w-[100px] object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                          />
+                        </div>
                       </div>
-                      <div className="text-sm text-muted-foreground">
-                        <p>{exp.period}</p>
-                        <p>{exp.location}</p>
+
+                      {/* Text content - 75% */}
+                      <div className="flex-[3]">
+                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
+                          <div>
+                            <h3 className="font-display text-xl font-semibold text-foreground">
+                              {exp.title}
+                            </h3>
+                            <p className="text-accent font-medium">{exp.company}</p>
+                          </div>
+                          <div className="text-sm text-muted-foreground">
+                            <p>{exp.period}</p>
+                            <p>{exp.location}</p>
+                          </div>
+                        </div>
+
+                        <ul className="space-y-3">
+                          {exp.highlights.map((highlight, hIndex) => (
+                            <li key={hIndex} className="flex items-start gap-3 text-muted-foreground">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+                              <span>{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {/* Logo - right side on desktop, 25% */}
+                      <div className="hidden md:flex flex-[1] items-center justify-center">
+                        <div className="w-[120px] h-[60px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-2">
+                          <img
+                            src={exp.logo}
+                            alt={`${exp.company} logo`}
+                            className="max-h-[48px] max-w-[100px] object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                          />
+                        </div>
                       </div>
                     </div>
-
-                    <ul className="space-y-3">
-                      {exp.highlights.map((highlight, hIndex) => (
-                        <li key={hIndex} className="flex items-start gap-3 text-muted-foreground">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                          <span>{highlight}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
               ))}
