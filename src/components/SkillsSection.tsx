@@ -73,7 +73,7 @@ export function SkillsSection() {
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               A comprehensive skill set spanning data engineering, analytics, visualization, 
-              and business strategy — all focused on driving measurable outcomes.
+              and business strategy, all focused on driving measurable outcomes.
             </p>
           </div>
 
