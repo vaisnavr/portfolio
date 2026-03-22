@@ -20,7 +20,7 @@ import {
   Cpu,
 } from "lucide-react";
 
-type ProjectCategory = "all" | "fintech" | "strategy";
+type ProjectCategory = "all" | "fintech" | "strategy" | "analytics";
 
 interface FrictionItem {
   hurdle: string;
