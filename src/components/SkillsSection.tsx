@@ -22,7 +22,7 @@ const skillCategories = [
   {
     title: "Visualization & BI",
     icon: BarChart2,
-    color: "primary",
+    color: "accent",
     skills: [
       { name: "Tableau", level: 92 },
       { name: "Power BI", level: 90 },
