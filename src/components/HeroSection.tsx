@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Mail, TrendingUp, BarChart3, PieChart, CheckCircle2, XCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const QUIZ_OPTIONS = [
   { label: "A", text: "Increase Marketing Spend", correct: false },
