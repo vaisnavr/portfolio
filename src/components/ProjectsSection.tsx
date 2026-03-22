@@ -1,77 +1,77 @@
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, TrendingUp, Users, ShoppingCart, Target, BarChart3, Lightbulb } from "lucide-react";
+import { ExternalLink, Github, TrendingUp, Users, BarChart3, Target, Lightbulb, Bot } from "lucide-react";
 
 const projects = [
   {
-    title: "Sales Forecasting Engine",
+    title: "Everlane Marketing & Brand Analytics Pipeline",
     icon: TrendingUp,
-    problem: "Retail chain struggled with inventory management due to inaccurate demand predictions, leading to $500K annual overstock losses.",
-    data: "3 years of historical sales data (2M+ transactions), weather data, promotional calendars, and economic indicators.",
-    methods: "Time series analysis (ARIMA, Prophet), feature engineering, ensemble modeling",
-    tools: ["Python", "Pandas", "Prophet", "Tableau"],
-    insights: "Identified seasonal patterns and promotional lift effects that improved forecast accuracy by 23%.",
-    impact: "Reduced inventory costs by $180K annually and decreased stockouts by 35%.",
-    github: "https://github.com",
+    problem: "Everlane needed data-driven insights into brand positioning gaps and customer retention drivers across multiple channels.",
+    data: "Integrated Trustpilot, Reddit, and survey data (1000+ responses) with Google Trends and ESRI Tapestry segmentation data.",
+    methods: "Segmentation, sentiment analysis, logistic regression, survey analytics",
+    tools: ["Python", "R", "JMP", "Tableau", "Web Scraping", "Enginius"],
+    insights: "Identified brand positioning gaps and key retention drivers through multi-source sentiment analysis and logistic regression modeling.",
+    impact: "Delivered actionable segmentation strategy enabling targeted marketing interventions for improved customer retention.",
+    github: "https://github.com/vaisnavr",
     color: "accent",
   },
   {
-    title: "Customer Segmentation Analysis",
-    icon: Users,
-    problem: "E-commerce company lacked targeted marketing strategies, treating all customers uniformly despite diverse behaviors.",
-    data: "Customer transaction history, website behavior logs, and demographic data for 150K customers.",
-    methods: "K-means clustering, RFM analysis, behavioral cohort analysis",
-    tools: ["Python", "Scikit-learn", "SQL", "Power BI"],
-    insights: "Discovered 5 distinct customer personas with unique purchasing patterns and lifetime value trajectories.",
-    impact: "Enabled targeted campaigns that increased email conversion rates by 42% and customer retention by 18%.",
-    github: "https://github.com",
+    title: "Digital Twin RAG Model",
+    icon: Bot,
+    problem: "Consumer persona research required expensive and time-consuming manual processes to simulate target customer behaviors.",
+    data: "Consumer behavior profiles, product reviews, and shopping pattern datasets for persona modeling.",
+    methods: "RAG architecture, vector embeddings, prompt engineering, persona simulation",
+    tools: ["Python", "Gemini", "FAISS", "Vector Databases"],
+    insights: "Developed a GenAI 'Digital Twin' for consumer persona mimicry, simulating a 'Trend-Conscious Sustainable Shopper'.",
+    impact: "Outperformed baseline LLM by 60% in groundedness and persona consistency for consumer behavior simulation.",
+    github: "https://github.com/vaisnavr",
     color: "primary",
   },
   {
-    title: "Executive Performance Dashboard",
-    icon: BarChart3,
-    problem: "Leadership team spent 10+ hours weekly compiling reports from disparate sources, delaying strategic decisions.",
-    data: "Integrated data from CRM, ERP, and marketing platforms covering sales, operations, and customer metrics.",
-    methods: "Data modeling, automated ETL pipelines, interactive visualization design",
-    tools: ["SQL", "Tableau", "Python", "Snowflake"],
-    insights: "Surfaced hidden correlations between marketing spend and regional sales performance.",
-    impact: "Reduced reporting time by 85% and accelerated decision-making cycle from 2 weeks to 2 days.",
-    github: "https://github.com",
-    color: "accent",
-  },
-  {
-    title: "A/B Testing Framework",
+    title: "AI-Driven Compliance Rule Engine",
     icon: Target,
-    problem: "Product team ran experiments without statistical rigor, leading to false conclusions and wasted development resources.",
-    data: "User interaction data from web and mobile platforms across 500K monthly active users.",
-    methods: "Hypothesis testing, Bayesian analysis, sequential testing, sample size calculations",
-    tools: ["Python", "R", "SQL", "Jupyter"],
-    insights: "Built reusable framework that standardized experiment design and automated statistical analysis.",
-    impact: "Prevented 3 false positive feature rollouts worth $200K in development costs.",
-    github: "https://github.com",
-    color: "primary",
-  },
-  {
-    title: "Churn Prediction Model",
-    icon: ShoppingCart,
-    problem: "SaaS company had 15% monthly churn rate but couldn't identify at-risk customers until cancellation.",
-    data: "Usage logs, support tickets, billing history, and NPS scores for 50K subscribers.",
-    methods: "Logistic regression, random forest, feature importance analysis, model interpretation",
-    tools: ["Python", "XGBoost", "SHAP", "Tableau"],
-    insights: "Identified 7 early warning signals that predict churn 30 days in advance with 78% accuracy.",
-    impact: "Enabled proactive retention efforts that reduced churn by 22% within 6 months.",
-    github: "https://github.com",
+    problem: "Fortune 500 FinServ clients needed automated compliance monitoring across multi-modal assets (Video, Image, Link) at scale.",
+    data: "Multi-modal asset content from 10,000+ users including video transcriptions, image text, and linked content.",
+    methods: "ML transcription, OCR (Optical Character Recognition), keyword detection, rule-based classification",
+    tools: ["Python", "ML/OCR", "Sprinklr Platform", "JIRA"],
+    insights: "Built automated detection of non-compliant keywords across video, image, and link assets at enterprise scale.",
+    impact: "Deployed for Fortune 500 FinServ clients serving 10,000+ users; received Recognition Certificate for exceptional delivery.",
+    github: "https://github.com/vaisnavr",
     color: "accent",
   },
   {
-    title: "Market Basket Analysis",
+    title: "Executive Analytics Dashboard Suite",
+    icon: BarChart3,
+    problem: "Regional and global clients lacked actionable visibility into market research and consumer behavior metrics.",
+    data: "Raw datasets from enterprise CRM, marketing platforms, and consumer behavior tracking systems.",
+    methods: "Data modeling, automated ETL pipelines, interactive visualization design, structured analysis frameworks",
+    tools: ["SQL", "Snowflake", "Tableau", "Power BI"],
+    insights: "Transformed raw datasets into testable insights, surfacing hidden patterns in consumer behavior and market trends.",
+    impact: "Delivered 15+ high-impact dashboards for regional and global enterprise clients, enabling data-driven strategic decisions.",
+    github: "https://github.com/vaisnavr",
+    color: "primary",
+  },
+  {
+    title: "Order-to-Cash Automation Platform",
     icon: Lightbulb,
-    problem: "Grocery retailer wanted to optimize store layouts and cross-sell strategies but lacked data-driven insights.",
-    data: "1.5 years of point-of-sale transaction data covering 10K+ SKUs and 200K transactions.",
-    methods: "Association rule mining (Apriori), lift analysis, network visualization",
-    tools: ["Python", "MLxtend", "NetworkX", "Power BI"],
-    insights: "Uncovered 150+ high-confidence product associations not captured by category-based thinking.",
-    impact: "Strategic product placements increased basket size by 8% and promotional bundle sales by 25%.",
-    github: "https://github.com",
+    problem: "Enterprise clients experienced manual accounts receivable workflows causing delays in cash-flow reporting and financial visibility.",
+    data: "Financial transaction data including ACH, wire, and card transactions; ERP billing and accounts receivable records.",
+    methods: "SQL optimization, stored procedures, payment portal integrations, SaaS financial modeling",
+    tools: ["SQL", "Excel (VBA)", "ERP Systems", "SaaS Platforms"],
+    insights: "Identified bottlenecks in financial transaction processing and automated key accounts receivable workflows.",
+    impact: "Streamlined processing by 25%, achieved 30% working capital savings across 7+ end-to-end implementations.",
+    github: "https://github.com/vaisnavr",
+    color: "accent",
+  },
+  {
+    title: "Time-Series Forecasting for Marketing Spend",
+    icon: Users,
+    problem: "Pacvue needed accurate forecasting models to optimize $100M+ in marketing spend allocation across regions.",
+    data: "Historical marketing spend data, regional performance metrics, and business KPIs across multiple markets.",
+    methods: "Time-series forecasting, modular data modeling, analytics pipeline architecture",
+    tools: ["Python", "Snowflake", "Tableau", "SQL"],
+    insights: "Identified regional growth trends and optimized marketing spend allocation through data-backed forecasting models.",
+    impact: "Improved KPI predictability for $100M+ marketing spend, delivering strategic recommendations to executive stakeholders.",
+    github: "https://github.com/vaisnavr",
     color: "primary",
   },
 ];
@@ -95,12 +95,11 @@ export function ProjectsSection() {
 
           {/* Projects Grid */}
           <div className="grid lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <article
                 key={project.title}
                 className="group p-8 rounded-2xl bg-card border border-border hover:border-accent/30 hover:shadow-card-hover transition-all duration-300"
               >
-                {/* Header */}
                 <div className="flex items-start justify-between mb-6">
                   <div className="flex items-center gap-4">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
@@ -125,28 +124,23 @@ export function ProjectsSection() {
                   </a>
                 </div>
 
-                {/* Content */}
                 <div className="space-y-4 text-sm">
                   <div>
                     <p className="font-medium text-foreground mb-1">Problem</p>
                     <p className="text-muted-foreground">{project.problem}</p>
                   </div>
-                  
                   <div>
                     <p className="font-medium text-foreground mb-1">Data</p>
                     <p className="text-muted-foreground">{project.data}</p>
                   </div>
-
                   <div>
                     <p className="font-medium text-foreground mb-1">Methods</p>
                     <p className="text-muted-foreground">{project.methods}</p>
                   </div>
-
                   <div>
                     <p className="font-medium text-foreground mb-1">Key Insights</p>
                     <p className="text-muted-foreground">{project.insights}</p>
                   </div>
-
                   <div className={`p-4 rounded-xl ${
                     project.color === "accent" ? "bg-accent/5 border border-accent/20" : "bg-primary/5 border border-primary/20"
                   }`}>
@@ -157,7 +151,6 @@ export function ProjectsSection() {
                   </div>
                 </div>
 
-                {/* Tools */}
                 <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-border">
                   {project.tools.map((tool) => (
                     <span
@@ -175,7 +168,7 @@ export function ProjectsSection() {
           {/* View More */}
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/vaisnavr" target="_blank" rel="noopener noreferrer">
                 View All Projects on GitHub
                 <ExternalLink size={18} />
               </a>

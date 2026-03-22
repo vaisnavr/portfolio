@@ -2,41 +2,40 @@ import { GraduationCap, Award, BookOpen } from "lucide-react";
 
 const education = [
   {
-    degree: "Master of Science in Business Analytics",
-    school: "Boston University Questrom School of Business",
-    period: "2023 – 2025",
-    gpa: "3.9/4.0",
+    degree: "Master of Science in Business Analytics (STEM)",
+    school: "University of Southern California, Marshall School of Business",
+    period: "2024 – 2026",
+    gpa: "3.6/4.0",
     coursework: [
-      "Predictive Analytics",
-      "Machine Learning for Business",
-      "Data Mining & Statistical Analysis",
-      "Business Intelligence & Visualization",
+      "SQL & Python",
+      "ETL & Data Warehousing",
       "Marketing Analytics",
-      "Operations Analytics",
+      "LLMs for Business",
+      "Product Management",
     ],
   },
   {
-    degree: "Bachelor of Science in Economics",
-    school: "University of California, Los Angeles",
-    period: "2019 – 2023",
-    gpa: "3.7/4.0",
+    degree: "Bachelor of Technology in Computer Science",
+    school: "Kalinga Institute of Industrial Technology",
+    period: "2018 – 2022",
+    gpa: "9.2/10",
     coursework: [
-      "Econometrics",
-      "Statistical Methods",
-      "Microeconomic Theory",
-      "Financial Economics",
-      "Data Analysis with R",
-      "Business Strategy",
+      "Data Structures & Algorithms",
+      "Database Management Systems",
+      "Software Engineering",
+      "Machine Learning",
+      "Computer Networks",
+      "Operating Systems",
     ],
   },
 ];
 
 const certifications = [
   {
-    name: "Google Data Analytics Professional Certificate",
-    issuer: "Google",
-    date: "2024",
-    icon: "📊",
+    name: "Snowflake Data Warehousing",
+    issuer: "Snowflake",
+    date: "2025",
+    icon: "❄️",
   },
   {
     name: "Tableau Desktop Specialist",
@@ -45,10 +44,10 @@ const certifications = [
     icon: "📈",
   },
   {
-    name: "AWS Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    date: "2023",
-    icon: "☁️",
+    name: "Google Data Analytics Professional Certificate",
+    issuer: "Google",
+    date: "2024",
+    icon: "📊",
   },
   {
     name: "SQL for Data Science",
@@ -70,7 +69,7 @@ export function EducationSection() {
               Education & Certifications
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A strong foundation in business, economics, and analytics, 
+              A strong foundation in Computer Science and Business Analytics, 
               complemented by industry-recognized certifications.
             </p>
           </div>
@@ -83,12 +82,9 @@ export function EducationSection() {
                 className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  {/* Icon */}
                   <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
                     <GraduationCap className="w-8 h-8 text-primary" />
                   </div>
-
-                  {/* Content */}
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
                       <div>
@@ -102,8 +98,6 @@ export function EducationSection() {
                         <p className="font-medium text-foreground">GPA: {edu.gpa}</p>
                       </div>
                     </div>
-
-                    {/* Coursework */}
                     <div>
                       <p className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
                         <BookOpen size={16} className="text-accent" />
