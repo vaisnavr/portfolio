@@ -116,14 +116,12 @@ export function ExperienceSection() {
                       </div>
 
                       {/* Logo - right side on desktop, 25% */}
-                      <div className="hidden md:flex flex-[1] items-center justify-center">
-                        <div className="w-[160px] h-[80px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-3">
-                          <img
-                            src={exp.logo}
-                            alt={`${exp.company} logo`}
-                            className="max-h-[64px] max-w-[140px] object-contain group-hover:scale-105 transition-all duration-500"
-                          />
-                        </div>
+                      <div className="hidden md:flex flex-[1] items-center justify-center pl-10">
+                        <img
+                          src={exp.logo}
+                          alt={`${exp.company} logo`}
+                          className="min-w-[160px] max-h-[90px] object-contain mix-blend-multiply group-hover:drop-shadow-[0_0_16px_hsl(var(--accent)/0.45)] group-hover:scale-105 transition-all duration-500"
+                        />
                       </div>
                     </div>
                   </div>
