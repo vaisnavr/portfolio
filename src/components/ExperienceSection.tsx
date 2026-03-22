@@ -142,7 +142,7 @@ export function ExperienceSection() {
             </div>
             <ul className="grid md:grid-cols-2 gap-4">
               {accomplishments.map((item, index) => (
-                <li key={index} className="flex items-start gap-3 text-muted-foreground">
+                <li key={index} className="flex items-start gap-3 text-foreground">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
                   <span>{item}</span>
                 </li>
