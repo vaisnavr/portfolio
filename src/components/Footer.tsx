@@ -1,4 +1,4 @@
-import { Linkedin, Github, Mail, Heart } from "lucide-react";
+import { Linkedin, Github, Mail, Heart, Phone } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
