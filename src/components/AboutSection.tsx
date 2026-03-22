@@ -9,7 +9,7 @@ const strengths = [
 },
 {
   icon: Lightbulb,
-  title: "Business Strategy & RevOps",
+  title: "Business Strategy",
   description: "Translating business requirements into technical specifications, driving revenue operations and SaaS metrics optimization."
 },
 {
