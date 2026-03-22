@@ -18,8 +18,6 @@ import {
   Scale,
   Megaphone,
   Cpu,
-  ChevronLeft,
-  ChevronRight,
 } from "lucide-react";
 
 type ProjectCategory = "all" | "fintech" | "strategy" | "analytics";
@@ -230,14 +228,6 @@ const projects: Project[] = [
   },
 ];
 
-const tabs = [
-  { key: "problem", label: "Problem & Methods" },
-  { key: "friction", label: "Friction Log" },
-  { key: "impact", label: "Business Impact" },
-] as const;
-
-type TabKey = (typeof tabs)[number]["key"];
-
 function useInView(ref: React.RefObject<HTMLElement | null>) {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
@@ -258,45 +248,43 @@ function useInView(ref: React.RefObject<HTMLElement | null>) {
   return isVisible;
 }
 
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
   const ref = useRef<HTMLElement>(null);
   const visible = useInView(ref);
-  const [activeTab, setActiveTab] = useState<TabKey>("problem");
-
-  const goNext = () => {
-    const idx = tabs.findIndex((t) => t.key === activeTab);
-    if (idx < tabs.length - 1) setActiveTab(tabs[idx + 1].key);
-  };
-  const goPrev = () => {
-    const idx = tabs.findIndex((t) => t.key === activeTab);
-    if (idx > 0) setActiveTab(tabs[idx - 1].key);
-  };
-
-  const activeIndex = tabs.findIndex((t) => t.key === activeTab);
 
   return (
     <article
       ref={ref}
-      className={`group rounded-2xl border border-purple-200/60 bg-white shadow-md hover:shadow-xl transition-all duration-500 flex flex-col ${
-        visible ? "animate-fade-in-up opacity-100" : "opacity-0 translate-y-8"
+      className={`group glass glass-hover rounded-2xl p-6 md:p-8 transition-all duration-500 ${
+        visible
+          ? "animate-fade-in-up opacity-100"
+          : "opacity-0 translate-y-8"
       }`}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      {/* Header — always visible */}
-      <div className="flex items-start justify-between p-5 pb-3">
+      {/* Header */}
+      <div className="flex items-start justify-between mb-5">
         <div className="flex items-center gap-3 flex-1 min-w-0">
-          <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center flex-shrink-0">
-            <project.icon className="w-5 h-5 text-purple-600" />
+          <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0">
+            <project.icon className="w-5 h-5 text-primary" />
           </div>
           <div className="min-w-0">
-            <h3 className="font-display text-lg font-semibold text-slate-800 leading-tight truncate">
+            <h3 className="font-display text-lg font-semibold text-foreground leading-tight truncate">
               {project.title}
             </h3>
-            <p className="text-slate-500 text-xs mt-0.5">{project.industry}</p>
+            <p className="text-muted-foreground text-xs mt-0.5">
+              {project.industry}
+            </p>
           </div>
         </div>
         <div className="flex items-center gap-2 flex-shrink-0 ml-3">
-          <Badge className="bg-emerald-50 text-emerald-600 border-emerald-200 text-xs hover:bg-emerald-50">
+          <Badge className="bg-emerald-500/15 text-emerald-400 border-emerald-500/30 text-xs">
             <CheckCircle2 className="w-3 h-3 mr-1" />
             {project.status}
           </Badge>
@@ -304,7 +292,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1.5 rounded-lg text-slate-400 hover:text-purple-600 hover:bg-purple-50 transition-colors"
+            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
             aria-label="View on GitHub"
           >
             <Github size={16} />
@@ -312,156 +300,78 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         </div>
       </div>
 
-      {/* Tabs navigation */}
-      <div className="px-5">
-        <div className="flex gap-1 bg-purple-50/80 rounded-lg p-1">
-          {tabs.map((tab) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              className={`flex-1 px-3 py-2 rounded-md text-xs font-medium transition-all duration-200 ${
-                activeTab === tab.key
-                  ? "bg-white text-purple-700 shadow-sm"
-                  : "text-slate-500 hover:text-slate-700"
-              }`}
-            >
-              {tab.label}
-            </button>
+      {/* Problem & Methods */}
+      <div className="space-y-3 text-sm mb-5">
+        <div>
+          <p className="font-medium text-foreground/80 mb-1">Problem</p>
+          <p className="text-muted-foreground leading-relaxed">
+            {project.problem}
+          </p>
+        </div>
+        <div>
+          <p className="font-medium text-foreground/80 mb-1">Methods</p>
+          <p className="text-muted-foreground">{project.methods}</p>
+        </div>
+      </div>
+
+      {/* Friction Log */}
+      <div className="rounded-xl bg-background/40 border border-border/50 p-4 mb-5">
+        <div className="flex items-center gap-2 mb-3">
+          <AlertTriangle className="w-4 h-4 text-primary" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+            Friction Log & Solution Output
+          </span>
+        </div>
+        <div className="space-y-3">
+          {project.frictionLog.map((item, i) => (
+            <div key={i} className="text-xs space-y-1">
+              <p className="text-muted-foreground">
+                <span className="text-foreground/70 font-medium">
+                  Hurdle:
+                </span>{" "}
+                {item.hurdle}
+              </p>
+              <p className="text-emerald-400/90">
+                <span className="font-medium">Solution:</span>{" "}
+                {item.solution}
+              </p>
+            </div>
           ))}
         </div>
       </div>
 
-      {/* Scrollable content area */}
-      <div className="relative flex-1 px-5 py-4 min-h-[200px]">
-        {/* Arrow navigation */}
-        <button
-          onClick={goPrev}
-          disabled={activeIndex === 0}
-          className={`absolute left-1 top-1/2 -translate-y-1/2 z-10 p-1 rounded-full transition-all ${
-            activeIndex === 0
-              ? "opacity-0 pointer-events-none"
-              : "text-purple-400 hover:text-purple-600 hover:bg-purple-50"
-          }`}
-        >
-          <ChevronLeft size={16} />
-        </button>
-        <button
-          onClick={goNext}
-          disabled={activeIndex === tabs.length - 1}
-          className={`absolute right-1 top-1/2 -translate-y-1/2 z-10 p-1 rounded-full transition-all ${
-            activeIndex === tabs.length - 1
-              ? "opacity-0 pointer-events-none"
-              : "text-purple-400 hover:text-purple-600 hover:bg-purple-50"
-          }`}
-        >
-          <ChevronRight size={16} />
-        </button>
-
-        <div className="overflow-hidden">
+      {/* Stakeholder Map */}
+      <div className="flex items-center gap-1 mb-5">
+        <span className="text-xs text-muted-foreground mr-2">Teams:</span>
+        {project.stakeholders.map((s, i) => (
           <div
-            className="flex transition-transform duration-300 ease-in-out"
-            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+            key={i}
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary/60 text-xs text-secondary-foreground"
+            title={s.label}
           >
-            {/* Slide 1: Problem & Methods */}
-            <div className="min-w-full px-2 space-y-3 text-sm">
-              <div>
-                <p className="font-medium text-slate-700 mb-1">Problem</p>
-                <p className="text-slate-500 leading-relaxed">{project.problem}</p>
-              </div>
-              <div>
-                <p className="font-medium text-slate-700 mb-1">Data</p>
-                <p className="text-slate-500 leading-relaxed">{project.data}</p>
-              </div>
-              <div>
-                <p className="font-medium text-slate-700 mb-1">Methods</p>
-                <p className="text-slate-500">{project.methods}</p>
-              </div>
-            </div>
-
-            {/* Slide 2: Friction Log */}
-            <div className="min-w-full px-2">
-              <div className="rounded-xl bg-purple-50/60 border border-purple-100 p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <AlertTriangle className="w-4 h-4 text-purple-500" />
-                  <span className="text-xs font-semibold text-purple-600 uppercase tracking-wider">
-                    Friction Log & Solution Output
-                  </span>
-                </div>
-                <div className="space-y-3">
-                  {project.frictionLog.map((item, i) => (
-                    <div key={i} className="text-xs space-y-1">
-                      <p className="text-slate-600">
-                        <span className="text-slate-700 font-medium">Hurdle:</span>{" "}
-                        {item.hurdle}
-                      </p>
-                      <p className="text-emerald-600">
-                        <span className="font-medium">Solution:</span>{" "}
-                        {item.solution}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {/* Stakeholder Map */}
-              <div className="flex items-center gap-1 mt-4">
-                <span className="text-xs text-slate-400 mr-2">Teams:</span>
-                {project.stakeholders.map((s, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-50 text-xs text-purple-600 border border-purple-100"
-                    title={s.label}
-                  >
-                    <s.icon className="w-3 h-3" />
-                    <span>{s.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Slide 3: Business Impact */}
-            <div className="min-w-full px-2 space-y-4">
-              <div className="rounded-xl bg-emerald-50 border border-emerald-100 p-5">
-                <p className="text-xs text-emerald-600 font-medium mb-1">
-                  Business Impact
-                </p>
-                <p className="text-emerald-700 font-display text-2xl font-bold">
-                  {project.impactMetric}
-                </p>
-                <p className="text-slate-600 text-sm mt-2">{project.impact}</p>
-              </div>
-              <div>
-                <p className="font-medium text-slate-700 text-sm mb-1">Key Insight</p>
-                <p className="text-slate-500 text-sm leading-relaxed">
-                  {project.insights}
-                </p>
-              </div>
-            </div>
+            <s.icon className="w-3 h-3" />
+            <span>{s.label}</span>
           </div>
-        </div>
-
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-1.5 mt-4">
-          {tabs.map((tab, i) => (
-            <button
-              key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
-              className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                activeIndex === i
-                  ? "bg-purple-500 w-5"
-                  : "bg-purple-200 hover:bg-purple-300"
-              }`}
-              aria-label={tab.label}
-            />
-          ))}
-        </div>
+        ))}
       </div>
 
-      {/* Tools — always visible at bottom */}
-      <div className="flex flex-wrap gap-1.5 px-5 pb-5 pt-3 border-t border-purple-100/60 mt-auto">
+      {/* Impact Metric */}
+      <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-4 mb-5">
+        <p className="text-xs text-emerald-400 font-medium mb-1">
+          Business Impact
+        </p>
+        <p className="text-emerald-400 font-display text-xl font-bold">
+          {project.impactMetric}
+        </p>
+        <p className="text-foreground/70 text-xs mt-1">{project.impact}</p>
+      </div>
+
+      {/* Tools */}
+      <div className="flex flex-wrap gap-1.5 pt-4 border-t border-border/40">
         {project.tools.map((tool) => (
           <span
             key={tool}
-            className="px-2.5 py-1 rounded-full bg-purple-50 text-purple-600 text-xs font-medium border border-purple-100"
+            className="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium"
           >
             {tool}
           </span>
@@ -482,26 +392,26 @@ export function ProjectsSection() {
   const categories: { key: ProjectCategory; label: string }[] = [
     { key: "all", label: "All Projects" },
     { key: "fintech", label: "Fintech Projects" },
-    { key: "strategy", label: "AI&Strategy Projects" },
+    { key: "strategy", label: "AI & Strategy Projects" },
     { key: "analytics", label: "Analytics Projects" },
   ];
 
   return (
-    <section id="projects" className="py-24 relative" style={{ background: "#F3E8FF" }}>
-      {/* Subtle background decoration */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-300/20 rounded-full blur-[120px] pointer-events-none" />
+    <section id="projects" className="py-24 bg-background relative">
+      {/* Subtle background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <p className="text-purple-600 font-medium mb-4 text-sm uppercase tracking-wider">
+            <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">
               Implementation War Room
             </p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-800 mb-6">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
               Case Studies & Impact
             </h2>
-            <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Each project follows the full journey — from business friction to
               shipped solution to measurable outcome.
             </p>
@@ -509,15 +419,15 @@ export function ProjectsSection() {
 
           {/* Quick Jump Filter */}
           <div className="flex justify-center mb-12">
-            <div className="inline-flex bg-white/80 backdrop-blur-sm rounded-xl p-1 gap-1 shadow-sm border border-purple-100">
+            <div className="inline-flex glass rounded-xl p-1 gap-1">
               {categories.map((cat) => (
                 <button
                   key={cat.key}
                   onClick={() => setFilter(cat.key)}
                   className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                     filter === cat.key
-                      ? "bg-purple-600 text-white shadow-md"
-                      : "text-slate-500 hover:text-slate-700 hover:bg-purple-50"
+                      ? "bg-primary text-primary-foreground shadow-glow"
+                      : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                   }`}
                 >
                   {cat.label}
@@ -535,12 +445,7 @@ export function ProjectsSection() {
 
           {/* View More */}
           <div className="text-center mt-12">
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="border-purple-300 text-purple-700 hover:bg-purple-100 hover:text-purple-800 bg-white"
-            >
+            <Button variant="outline" size="lg" asChild>
               <a
                 href="https://github.com/vaisnavr"
                 target="_blank"
