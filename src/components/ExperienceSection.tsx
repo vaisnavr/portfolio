@@ -1,14 +1,10 @@
 import { Award } from "lucide-react";
-import pacvueLogo from "@/assets/pacvue-logo.png";
-import sprinklrLogo from "@/assets/sprinklr-logo.png";
-import highradiusLogo from "@/assets/highradius-logo.png";
 
 const experiences = [
   {
     type: "work",
     title: "Revenue Operations Analyst Intern",
     company: "Pacvue",
-    logo: pacvueLogo,
     period: "May 2025 – Aug 2025",
     location: "California",
     highlights: [
@@ -20,7 +16,6 @@ const experiences = [
     type: "work",
     title: "Business Systems Analyst (Managed Services)",
     company: "Sprinklr",
-    logo: sprinklrLogo,
     period: "Sep 2022 – Aug 2024",
     location: "India",
     highlights: [
@@ -34,7 +29,6 @@ const experiences = [
     type: "work",
     title: "Technical Implementation Consultant",
     company: "HighRadius",
-    logo: highradiusLogo,
     period: "Jun 2021 – Sep 2022",
     location: "India",
     highlights: [
@@ -77,24 +71,15 @@ export function ExperienceSection() {
             <div className="space-y-8">
               {experiences.map((exp, index) => (
                 <div key={index} className="relative pl-0 md:pl-20">
-                  {/* Timeline dot replaced with logo */}
-                  <div className="hidden md:flex absolute left-[5px] w-[42px] h-[42px] rounded-full bg-card border-2 border-border shadow-sm items-center justify-center overflow-hidden" style={{ top: "1.5rem" }}>
-                    <img src={exp.logo} alt={`${exp.company} logo`} className="w-7 h-7 object-contain" />
-                  </div>
+                  <div className="hidden md:flex absolute left-6 w-4 h-4 rounded-full bg-accent border-4 border-background shadow-sm" style={{ top: "1.5rem" }} />
                   
                   <div className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
-                      <div className="flex items-center gap-4">
-                        {/* Mobile logo */}
-                        <div className="md:hidden w-12 h-12 rounded-xl bg-card border border-border flex items-center justify-center shrink-0 overflow-hidden">
-                          <img src={exp.logo} alt={`${exp.company} logo`} className="w-8 h-8 object-contain" />
-                        </div>
-                        <div>
-                          <h3 className="font-display text-xl font-semibold text-foreground">
-                            {exp.title}
-                          </h3>
-                          <p className="text-accent font-medium">{exp.company}</p>
-                        </div>
+                      <div>
+                        <h3 className="font-display text-xl font-semibold text-foreground">
+                          {exp.title}
+                        </h3>
+                        <p className="text-accent font-medium">{exp.company}</p>
                       </div>
                       <div className="text-sm text-muted-foreground">
                         <p>{exp.period}</p>
