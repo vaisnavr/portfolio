@@ -110,7 +110,11 @@ export function ExperienceSection() {
                           {exp.highlights.map((highlight, hIndex) => (
                             <li key={hIndex} className="flex items-start gap-3 text-foreground">
                               <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                              <span>{highlight}</span>
+                              <span dangerouslySetInnerHTML={{ __html: highlight
+                                .replace(/\bFinTech\b/g, '<strong class="font-bold">FinTech</strong>')
+                                .replace(/\bDigital Marketing\b/g, '<strong class="font-bold">Digital Marketing</strong>')
+                                .replace(/\bSaaS\b/g, '<strong class="font-bold">SaaS</strong>')
+                              }} />
                             </li>
                           ))}
                         </ul>
