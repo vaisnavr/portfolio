@@ -128,7 +128,7 @@ export function SkillsSection() {
             <div className="flex flex-wrap justify-center gap-3">
               {["RAG & Vector Databases", "FAISS", "Prompt Engineering", "LLMs for Business", 
                 "ETL Pipelines", "Agile/Scrum", "JIRA", "OCR & ML Transcription", "Financial Services",
-                "Business Process Transformation", "R", "Web Scraping"].map((skill) => (
+                "Business Process Transformation", "R", "Web Scraping", "Marketing Analytics (LTV/CAC)", "FinTech Data Strategy"].map((skill) => (
                 <span
                   key={skill}
                   className="px-4 py-2 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-accent/10 hover:text-accent transition-colors cursor-default"
