@@ -30,24 +30,23 @@ export function AboutSection() {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - Photo + Text */}
             <div>
               <div className="mb-8 flex justify-center lg:justify-start">
                 <div className="relative">
-                  <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-accent/20 shadow-xl">
+                  <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-xl">
                     <img
                       src={profilePhoto}
                       alt="Vaisnav Roy — Business Analytics Professional"
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
-                    <span className="text-accent text-lg">✦</span>
+                  <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <span className="text-primary text-lg">✦</span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-accent font-medium mb-4">About Me</p>
+              <p className="text-primary font-medium mb-4">About Me</p>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
                 Turning Data Into Business Advantage
               </h2>
@@ -69,16 +68,15 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Right Column - Strengths Grid */}
             <div className="grid sm:grid-cols-2 gap-6">
               {strengths.map((strength, index) => (
                 <div
                   key={strength.title}
-                  className="group p-6 rounded-2xl bg-card border border-border hover:border-accent/30 hover:shadow-card-hover transition-all duration-300"
+                  className="group p-6 rounded-2xl glass glass-hover transition-all duration-300"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                    <strength.icon className="w-6 h-6 text-accent" />
+                  <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
+                    <strength.icon className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="font-display text-lg font-semibold text-foreground mb-2">
                     {strength.title}
