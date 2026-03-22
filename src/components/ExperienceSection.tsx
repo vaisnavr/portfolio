@@ -72,12 +72,12 @@ export function ExperienceSection() {
 
           {/* Timeline */}
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
+            <div className="absolute left-9 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
 
             <div className="space-y-8">
               {experiences.map((exp, index) => (
-                <div key={index} className="relative pl-0 md:pl-20 group">
-                  <div className="hidden md:flex absolute left-6 w-4 h-4 rounded-full bg-accent border-4 border-background shadow-sm" style={{ top: "1.5rem" }} />
+                <div key={index} className="relative pl-0 md:pl-24 group">
+                  <div className="hidden md:flex absolute left-7 w-5 h-5 rounded-full bg-accent border-4 border-background shadow-sm" style={{ top: "1.5rem" }} />
                   
                   <div className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300">
                     {/* Mobile: logo above text */}
@@ -107,7 +107,7 @@ export function ExperienceSection() {
 
                         <ul className="space-y-3">
                           {exp.highlights.map((highlight, hIndex) => (
-                            <li key={hIndex} className="flex items-start gap-3 text-muted-foreground">
+                            <li key={hIndex} className="flex items-start gap-3 text-foreground">
                               <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
                               <span>{highlight}</span>
                             </li>
@@ -142,7 +142,7 @@ export function ExperienceSection() {
             </div>
             <ul className="grid md:grid-cols-2 gap-4">
               {accomplishments.map((item, index) => (
-                <li key={index} className="flex items-start gap-3 text-muted-foreground">
+                <li key={index} className="flex items-start gap-3 text-foreground">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
                   <span>{item}</span>
                 </li>
