@@ -393,6 +393,7 @@ export function ProjectsSection() {
     { key: "all", label: "All Projects" },
     { key: "fintech", label: "Fintech Projects" },
     { key: "strategy", label: "AI & Strategy Projects" },
+    { key: "analytics", label: "Analytics Projects" },
   ];
 
   return (
