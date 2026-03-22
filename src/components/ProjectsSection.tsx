@@ -20,7 +20,7 @@ import {
   Cpu,
 } from "lucide-react";
 
-type ProjectCategory = "all" | "fintech" | "strategy";
+type ProjectCategory = "all" | "fintech" | "strategy" | "analytics";
 
 interface FrictionItem {
   hurdle: string;
@@ -187,6 +187,42 @@ const projects: Project[] = [
       { icon: Megaphone, label: "Marketing" },
       { icon: DollarSign, label: "Revenue" },
       { icon: BarChart3, label: "Analytics" },
+    ],
+    github: "https://github.com/vaisnavr",
+  },
+  {
+    title: "Wine Price vs. Rating Analysis (USC)",
+    icon: BarChart3,
+    category: "analytics",
+    industry: "Consumer Analytics / Academic",
+    status: "Shipped",
+    problem:
+      "Investigated whether expensive wines are necessarily better-rated, challenging common consumer assumptions using large-scale Vivino.com data.",
+    data: "13,834 wines from Vivino.com across 33 countries, 4 wine types, with price, rating, region, and vintage data.",
+    methods:
+      "OLS regression, correlation analysis, EDA, hypothesis testing, segmentation by continent & wine type",
+    tools: ["Python", "R", "JMP", "Tableau", "Web Scraping"],
+    insights:
+      "Price explains only 23.3% of rating variance (R²=0.233). Strongest price-rating correlation found in the Americas and Sparkling wines. Price is statistically significant but practically weak as a predictor.",
+    impact:
+      "Debunked the price-quality assumption with statistical rigor; delivered actionable segmentation insights for value-driven wine selection strategies.",
+    impactMetric: "13.8K Wines Analyzed",
+    frictionLog: [
+      {
+        hurdle: "Unbalanced dataset skewed toward European red wines (80% Europe, 63% Red)",
+        solution:
+          "Applied sub-group testing by continent and wine type to ensure findings generalized across segments.",
+      },
+      {
+        hurdle: "Multiple confounding factors (region reputation, brand, vintage, packaging)",
+        solution:
+          "Designed ideal blind-test experiment framework and controlled for confounders via correlation matrix analysis.",
+      },
+    ],
+    stakeholders: [
+      { icon: BarChart3, label: "Analytics" },
+      { icon: Users, label: "Research" },
+      { icon: Lightbulb, label: "Strategy" },
     ],
     github: "https://github.com/vaisnavr",
   },
@@ -357,6 +393,7 @@ export function ProjectsSection() {
     { key: "all", label: "All Projects" },
     { key: "fintech", label: "Fintech Projects" },
     { key: "strategy", label: "AI & Strategy Projects" },
+    { key: "analytics", label: "Analytics Projects" },
   ];
 
   return (
