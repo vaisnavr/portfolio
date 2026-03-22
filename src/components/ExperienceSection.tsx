@@ -83,11 +83,11 @@ export function ExperienceSection() {
                     <div className="flex flex-col md:flex-row gap-6">
                       {/* Logo - shown above text on mobile */}
                       <div className="flex justify-center md:hidden">
-                        <div className="w-[120px] h-[60px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-2">
+                        <div className="w-[160px] h-[80px] rounded-lg bg-white/90 border border-[hsl(214_32%_91%)] flex items-center justify-center p-3">
                           <img
                             src={exp.logo}
                             alt={`${exp.company} logo`}
-                            className="max-h-[48px] max-w-[100px] object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                            className="max-h-[64px] max-w-[140px] object-contain group-hover:scale-105 transition-all duration-500"
                           />
                         </div>
                       </div>
