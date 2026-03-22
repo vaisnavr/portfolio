@@ -80,7 +80,7 @@ const projects: Project[] = [
       { icon: BarChart3, label: "Analytics" },
       { icon: Users, label: "Product" },
     ],
-    github: "https://github.com/vaisnavr",
+    github: "https://github.com/vaisnavr/Everlane-Marketing-Brand-Analytics-Pipeline",
   },
   {
     title: "Digital Twin RAG Model",
