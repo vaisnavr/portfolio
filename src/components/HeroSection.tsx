@@ -6,10 +6,10 @@ import heroProfile from "@/assets/hero-profile.png";
 import profilePhoto from "@/assets/profile-photo.png";
 
 const QUIZ_OPTIONS = [
-  { label: "01", text: "Deep-Dive Analytics" },
-  { label: "02", text: "Audit Tech Implementation" },
-  { label: "03", text: "Scale Sales Ops" },
-];
+{ label: "01", text: "Deep-Dive Analytics" },
+{ label: "02", text: "Audit Tech Implementation" },
+{ label: "03", text: "Scale Sales Ops" }];
+
 
 function useCountUp(target: number, start: boolean, duration = 1800, suffix = "") {
   const [value, setValue] = useState(0);
@@ -26,7 +26,7 @@ function useCountUp(target: number, start: boolean, duration = 1800, suffix = ""
       if (progress < 1) rafRef.current = requestAnimationFrame(animate);
     };
     rafRef.current = requestAnimationFrame(animate);
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
+    return () => {if (rafRef.current) cancelAnimationFrame(rafRef.current);};
   }, [start, target, duration]);
 
   return `${value}${suffix}`;
@@ -51,7 +51,7 @@ export function HeroSection() {
         setPhase("profile");
         toast({
           title: "Great instinct.",
-          description: "Welcome to my portfolio.",
+          description: "Welcome to my portfolio."
         });
         setTimeout(() => setStatsVisible(true), 400);
       }, 900);
@@ -66,7 +66,7 @@ export function HeroSection() {
         {/* Subtle grid */}
         <div className="absolute inset-0 opacity-[0.06]" style={{
           backgroundImage: "linear-gradient(hsl(239 84% 67% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(239 84% 67% / 0.4) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+          backgroundSize: "60px 60px"
         }} />
 
         {/* Ambient glows */}
@@ -87,8 +87,8 @@ export function HeroSection() {
                   <img
                     src={heroProfile}
                     alt="Vaisnav Roy — Business Analytics Professional"
-                    className="w-full h-full object-cover object-top"
-                  />
+                    className="w-full h-full object-cover object-top" />
+                  
                 </div>
               </div>
             </div>
@@ -108,14 +108,14 @@ export function HeroSection() {
               </h2>
 
               <div className="space-y-4">
-                {QUIZ_OPTIONS.map((option, i) => (
-                  <button
-                    key={i}
-                    onClick={handleOptionClick}
-                    disabled={phase === "dissolving"}
-                    className="w-full text-left rounded-xl border border-border bg-secondary/40 hover:border-primary/50 hover:bg-primary/10 hover:shadow-glow px-6 py-5 transition-all duration-300 group animate-fade-in-up opacity-0"
-                    style={{ animationDelay: `${0.4 + i * 0.1}s` }}
-                  >
+                {QUIZ_OPTIONS.map((option, i) =>
+                <button
+                  key={i}
+                  onClick={handleOptionClick}
+                  disabled={phase === "dissolving"}
+                  className="w-full text-left rounded-xl border border-border bg-secondary/40 hover:border-primary/50 hover:bg-primary/10 hover:shadow-glow px-6 py-5 transition-all duration-300 group animate-fade-in-up opacity-0"
+                  style={{ animationDelay: `${0.4 + i * 0.1}s` }}>
+                  
                     <div className="flex items-center gap-5">
                       <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-sm font-bold text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                         {option.label}
@@ -126,7 +126,7 @@ export function HeroSection() {
                       <ArrowRight size={18} className="ml-auto text-muted-foreground/0 group-hover:text-primary group-hover:translate-x-1 transition-all" />
                     </div>
                   </button>
-                ))}
+                )}
               </div>
 
               <p className="text-muted-foreground text-xs mt-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.7s" }}>
@@ -135,8 +135,8 @@ export function HeroSection() {
             </div>
           </div>
         </div>
-      </section>
-    );
+      </section>);
+
   }
 
   // ── Profile Phase ──
@@ -172,9 +172,9 @@ export function HeroSection() {
               <span className="text-gradient">The Bridge Between Data and Impact.</span>
             </p>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
-              Expert in Product Implementation, Business Strategy, and RevOps.
-              I don't just analyze data—I drive the cross-functional adoption that delivers results.
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>Expert in Product Implementation, Business Strategy in Fin-tech and Digital Marketing. I don't just analyze data, I drive the cross-functional adoption that delivers results.
+
+
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.5s" }}>
@@ -206,8 +206,8 @@ export function HeroSection() {
                 <img
                   src={profilePhoto}
                   alt="Vaisnav Roy — Business Analytics Professional"
-                  className="w-full h-full object-cover"
-                />
+                  className="w-full h-full object-cover" />
+                
               </div>
               <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-primary/15 border border-primary/25 flex items-center justify-center backdrop-blur-sm">
                 <span className="text-primary text-lg">✦</span>
@@ -237,6 +237,6 @@ export function HeroSection() {
           <div className="w-1 h-2 bg-muted-foreground/50 rounded-full" />
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
