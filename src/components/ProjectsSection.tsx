@@ -317,9 +317,9 @@ function ProjectCard({
       {/* Friction Log */}
       <div className="rounded-xl bg-background/40 border border-border/50 p-4 mb-5">
         <div className="flex items-center gap-2 mb-3">
-          <AlertTriangle className="w-4 h-4 text-amber-400" />
-          <span className="text-xs font-semibold text-amber-400 uppercase tracking-wider">
-            Friction Log
+          <AlertTriangle className="w-4 h-4 text-primary" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+            Friction Log & Solution Output
           </span>
         </div>
         <div className="space-y-3">
