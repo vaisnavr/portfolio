@@ -154,9 +154,6 @@ const projects: Project[] = [
     ],
     github: "https://github.com/vaisnavr",
   },
-  {
-    title: "Executive Analytics Dashboard Suite",
-    icon: BarChart3,
     category: "strategy",
     industry: "Enterprise / SaaS",
     status: "Shipped",
