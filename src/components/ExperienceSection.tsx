@@ -1,3 +1,4 @@
+import React from "react";
 import { Award } from "lucide-react";
 import logoPacvue from "@/assets/logo-pacvue.png";
 import logoSprinklr from "@/assets/logo-sprinklr.png";
