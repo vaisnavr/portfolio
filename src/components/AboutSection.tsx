@@ -1,25 +1,26 @@
 import { Target, Lightbulb, Users, TrendingUp } from "lucide-react";
+import profilePhoto from "@/assets/profile-photo.png";
 
 const strengths = [
   {
     icon: Target,
-    title: "Analytical Thinking",
-    description: "Breaking down complex problems into actionable insights through structured frameworks and rigorous analysis.",
+    title: "Product Implementation",
+    description: "End-to-end project lifecycle management, from requirement gathering and UAT to Agile delivery with cross-functional teams.",
   },
   {
     icon: Lightbulb,
-    title: "Business Acumen",
-    description: "Connecting data findings to real business outcomes, ensuring analyses drive meaningful decisions.",
+    title: "Business Strategy & RevOps",
+    description: "Translating business requirements into technical specifications, driving revenue operations and SaaS metrics optimization.",
   },
   {
     icon: Users,
-    title: "Clear Communication",
-    description: "Translating technical findings into compelling narratives that resonate with stakeholders at all levels.",
+    title: "Cross-functional Leadership",
+    description: "Bridging marketing, sales, product, and engineering teams to drive adoption and deliver measurable business outcomes.",
   },
   {
     icon: TrendingUp,
-    title: "Impact Focus",
-    description: "Prioritizing analyses that deliver measurable ROI and sustainable competitive advantages.",
+    title: "Data-Driven Impact",
+    description: "Building analytics pipelines, dashboards, and AI-driven solutions that enable $5.5M+ ARR retention and 30% efficiency gains.",
   },
 ];
 
@@ -29,25 +30,41 @@ export function AboutSection() {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Column - Text */}
+            {/* Left Column - Photo + Text */}
             <div>
+              <div className="mb-8 flex justify-center lg:justify-start">
+                <div className="relative">
+                  <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-accent/20 shadow-xl">
+                    <img
+                      src={profilePhoto}
+                      alt="Vaisnav Roy — Business Analytics Professional"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center">
+                    <span className="text-accent text-lg">✦</span>
+                  </div>
+                </div>
+              </div>
+
               <p className="text-accent font-medium mb-4">About Me</p>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
                 Turning Data Into Business Advantage
               </h2>
               <div className="space-y-4 text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  I'm a Business Analytics professional with a passion for uncovering the stories hidden within data. 
-                  My approach combines technical rigor with strategic thinking to deliver insights that matter.
+                  I'm a Business Analytics graduate from <span className="text-foreground font-medium">USC Marshall School of Business</span> with 
+                  3+ years of experience in product implementation, business systems analysis, and revenue operations across 
+                  <span className="text-foreground font-medium"> Financial Services, SaaS, and Fintech</span>.
                 </p>
                 <p>
-                  With experience spanning <span className="text-foreground font-medium">retail, finance, and technology</span>, 
-                  I've developed a versatile analytical toolkit. I thrive on challenges that require both 
-                  quantitative precision and creative problem-solving.
+                  I don't just analyze data — I drive the cross-functional adoption that delivers results. From architecting 
+                  analytics pipelines in Snowflake to deploying AI-driven compliance engines for Fortune 500 clients, 
+                  I bridge the gap between technical execution and strategic impact.
                 </p>
                 <p>
-                  Currently seeking opportunities where I can leverage data to drive <span className="text-foreground font-medium">measurable business outcomes</span> — 
-                  whether that's optimizing operations, improving customer experiences, or identifying new growth opportunities.
+                  Currently seeking opportunities in <span className="text-foreground font-medium">Business Analytics, Product Analytics, and Strategy</span> where 
+                  I can leverage data to drive measurable business outcomes.
                 </p>
               </div>
             </div>
