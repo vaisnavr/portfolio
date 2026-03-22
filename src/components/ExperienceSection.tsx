@@ -49,48 +49,37 @@ const accomplishments = [
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-24 bg-gradient-subtle">
+    <section id="experience" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-16">
-            <p className="text-accent font-medium mb-4">Career Journey</p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Experience & Accomplishments
-            </h2>
+            <p className="text-primary font-medium mb-4">Career Journey</p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">Experience & Accomplishments</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              3+ years driving measurable business value through product implementation, 
-              business systems analysis, and revenue operations.
+              3+ years driving measurable business value through product implementation, business systems analysis, and revenue operations.
             </p>
           </div>
 
-          {/* Timeline */}
           <div className="relative">
             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
-
             <div className="space-y-8">
               {experiences.map((exp, index) => (
                 <div key={index} className="relative pl-0 md:pl-20">
-                  <div className="hidden md:flex absolute left-6 w-4 h-4 rounded-full bg-accent border-4 border-background shadow-sm" style={{ top: "1.5rem" }} />
-                  
-                  <div className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300">
+                  <div className="hidden md:flex absolute left-6 w-4 h-4 rounded-full bg-primary border-4 border-background shadow-sm" style={{ top: "1.5rem" }} />
+                  <div className="p-8 rounded-2xl bg-popover border border-border hover:shadow-[0_0_25px_hsl(45_80%_60%/0.15)] hover:border-primary/30 transition-all duration-300">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
                       <div>
-                        <h3 className="font-display text-xl font-semibold text-foreground">
-                          {exp.title}
-                        </h3>
-                        <p className="text-accent font-medium">{exp.company}</p>
+                        <h3 className="font-display text-xl font-semibold text-foreground">{exp.title}</h3>
+                        <p className="text-primary font-medium">{exp.company}</p>
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        <p>{exp.period}</p>
-                        <p>{exp.location}</p>
+                        <p>{exp.period}</p><p>{exp.location}</p>
                       </div>
                     </div>
-
                     <ul className="space-y-3">
                       {exp.highlights.map((highlight, hIndex) => (
                         <li key={hIndex} className="flex items-start gap-3 text-muted-foreground">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
                           <span>{highlight}</span>
                         </li>
                       ))}
@@ -101,21 +90,17 @@ export function ExperienceSection() {
             </div>
           </div>
 
-          {/* Additional Accomplishments */}
-          <div className="mt-16 p-8 rounded-2xl bg-card border border-border">
+          <div className="mt-16 p-8 rounded-2xl bg-popover border border-border">
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-                <Award className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Award className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-display text-xl font-semibold text-foreground">
-                Notable Accomplishments
-              </h3>
+              <h3 className="font-display text-xl font-semibold text-foreground">Notable Accomplishments</h3>
             </div>
             <ul className="grid md:grid-cols-2 gap-4">
               {accomplishments.map((item, index) => (
                 <li key={index} className="flex items-start gap-3 text-muted-foreground">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                  <span>{item}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /><span>{item}</span>
                 </li>
               ))}
             </ul>

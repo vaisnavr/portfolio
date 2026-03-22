@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Mail, TrendingUp, BarChart3, PieChart, CheckCircle2, XCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import heroPhoto from "@/assets/hero-photo.jpeg";
 
 const QUIZ_OPTIONS = [
   { label: "A", text: "Increase Marketing Spend", correct: false },
@@ -46,7 +47,7 @@ function GlitchOverlay({ active, onDone }: { active: boolean; onDone: () => void
         {Array.from({ length: 12 }).map((_, i) => (
           <div
             key={i}
-            className="absolute left-0 right-0 bg-primary/90"
+            className="absolute left-0 right-0 bg-primary/80"
             style={{
               top: `${(i / 12) * 100}%`,
               height: `${100 / 12}%`,
@@ -57,7 +58,7 @@ function GlitchOverlay({ active, onDone }: { active: boolean; onDone: () => void
           />
         ))}
       </div>
-      <div className="absolute inset-0 bg-primary/20 animate-[flash_0.6s_0.4s_ease-out_forwards] opacity-0" />
+      <div className="absolute inset-0 bg-primary/10 animate-[flash_0.6s_0.4s_ease-out_forwards] opacity-0" />
     </div>
   );
 }
@@ -104,14 +105,14 @@ export function HeroSection() {
         <GlitchOverlay active={phase === "transitioning"} onDone={handleTransitionDone} />
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
           {/* Subtle grid */}
-          <div className="absolute inset-0 opacity-[0.04]" style={{
-            backgroundImage: "linear-gradient(hsl(239,84%,67%) 1px, transparent 1px), linear-gradient(90deg, hsl(239,84%,67%) 1px, transparent 1px)",
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: "linear-gradient(hsl(140,13%,55%) 1px, transparent 1px), linear-gradient(90deg, hsl(140,13%,55%) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }} />
 
-          {/* Floating accents */}
+          {/* Warm accents */}
           <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-primary/8 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-secondary rounded-full blur-3xl" />
 
           <div className={`relative z-10 max-w-2xl w-full mx-6 transition-all duration-500 ${selectedOption !== null ? "scale-95 opacity-60" : ""}`}>
             {/* Challenge badge */}
@@ -123,7 +124,7 @@ export function HeroSection() {
             </div>
 
             {/* Card */}
-            <div className="glass rounded-2xl p-8 md:p-10 shadow-2xl">
+            <div className="bg-popover rounded-2xl p-8 md:p-10 shadow-xl border border-border">
               <h2 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-8">
                 A high-growth Fintech firm is seeing a{" "}
                 <span className="text-primary">25% drop</span> in product adoption.{" "}
@@ -145,8 +146,8 @@ export function HeroSection() {
                         ${isWrong
                           ? "border-destructive/60 bg-destructive/10 animate-[shake_0.4s_ease-in-out]"
                           : isSelected
-                            ? "border-primary bg-primary/15 shadow-glow"
-                            : "border-border bg-background/50 hover:border-primary/40 hover:bg-secondary/50"
+                            ? "border-primary bg-primary/10 shadow-glow"
+                            : "border-border bg-card hover:border-primary/40 hover:bg-secondary/50"
                         }
                       `}
                     >
@@ -192,81 +193,92 @@ export function HeroSection() {
   // ── Profile Phase ──
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
-      {/* Background Elements */}
+      {/* Warm background blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/8 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-
-        <div className="absolute top-1/4 left-[15%] text-primary/20 animate-float" style={{ animationDelay: "0.5s" }}>
-          <TrendingUp size={48} />
-        </div>
-        <div className="absolute top-1/3 right-[20%] text-primary/15 animate-float" style={{ animationDelay: "1.5s" }}>
-          <BarChart3 size={56} />
-        </div>
-        <div className="absolute bottom-1/3 left-[25%] text-primary/15 animate-float" style={{ animationDelay: "3s" }}>
-          <PieChart size={40} />
-        </div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
       </div>
 
       <div className="container mx-auto px-6 py-20 pt-32 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.1s" }}>
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse-subtle" />
-            Open to Opportunities
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left - Content */}
+          <div className="text-center lg:text-left">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.1s" }}>
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse-subtle" />
+              Open to Opportunities
+            </div>
+
+            {/* Name */}
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-fade-in-up opacity-0 leading-tight" style={{ animationDelay: "0.2s" }}>
+              I build the strategy.{" "}
+              <span className="text-primary italic">You see the results.</span>
+            </h1>
+
+            {/* Sub-headline */}
+            <p className="text-lg md:text-xl text-muted-foreground max-w-xl mb-4 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.3s" }}>
+              <span className="text-foreground font-semibold">Vaisnav Roy</span> — Expert in Product Implementation, Business Strategy, and RevOps.
+            </p>
+            <p className="text-base text-muted-foreground max-w-xl mb-10 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.35s" }}>
+              I don't just analyze data—I drive the cross-functional adoption that delivers results.
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row items-center lg:items-start gap-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
+              <Button variant="hero" size="xl" asChild>
+                <a href="#projects">
+                  View Projects
+                  <ArrowRight size={20} />
+                </a>
+              </Button>
+              <Button variant="hero-outline" size="xl" asChild>
+                <a href="/resume.pdf" download>
+                  <Download size={20} />
+                  Resume
+                </a>
+              </Button>
+              <Button variant="outline" size="xl" asChild>
+                <a href="#contact">
+                  <Mail size={20} />
+                  Contact
+                </a>
+              </Button>
+            </div>
+
+            {/* Animated Stats */}
+            <div className="grid grid-cols-3 gap-8 mt-16 pt-10 border-t border-border/50 animate-fade-in-up opacity-0" style={{ animationDelay: "0.5s" }}>
+              <div className="text-center lg:text-left">
+                <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat1}</p>
+                <p className="text-sm text-muted-foreground mt-1">Analytics Projects</p>
+              </div>
+              <div className="text-center lg:text-left">
+                <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat2}</p>
+                <p className="text-sm text-muted-foreground mt-1">Industries Explored</p>
+              </div>
+              <div className="text-center lg:text-left">
+                <p className="font-display text-3xl md:text-4xl font-bold text-primary">${stat3}</p>
+                <p className="text-sm text-muted-foreground mt-1">Business Impact</p>
+              </div>
+            </div>
           </div>
 
-          {/* Name */}
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
-            Vaisnav Roy
-          </h1>
-
-          {/* Headline */}
-          <p className="font-display text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.3s" }}>
-            <span className="text-gradient">The Bridge Between Data and Impact.</span>
-          </p>
-
-          {/* Sub-headline */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
-            Expert in Product Implementation, Business Strategy, and RevOps.
-            I don't just analyze data—I drive the cross-functional adoption that delivers results.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.5s" }}>
-            <Button variant="hero" size="xl" asChild>
-              <a href="#projects">
-                View Projects
-                <ArrowRight size={20} />
-              </a>
-            </Button>
-            <Button variant="hero-outline" size="xl" asChild>
-              <a href="/resume.pdf" download>
-                <Download size={20} />
-                Download Resume
-              </a>
-            </Button>
-            <Button variant="outline" size="xl" asChild>
-              <a href="#contact">
-                <Mail size={20} />
-                Contact Me
-              </a>
-            </Button>
-          </div>
-
-          {/* Animated Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-20 pt-12 border-t border-border/50 animate-fade-in-up opacity-0" style={{ animationDelay: "0.6s" }}>
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat1}</p>
-              <p className="text-sm text-muted-foreground mt-1">Analytics Projects</p>
-            </div>
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat2}</p>
-              <p className="text-sm text-muted-foreground mt-1">Industries Explored</p>
-            </div>
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-foreground">${stat3}</p>
-              <p className="text-sm text-muted-foreground mt-1">Business Impact</p>
+          {/* Right - Photo with organic mask */}
+          <div className="flex justify-center lg:justify-end animate-fade-in-up opacity-0" style={{ animationDelay: "0.3s" }}>
+            <div className="relative">
+              {/* Decorative blob behind */}
+              <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] rotate-3 blur-sm" />
+              <div className="absolute -inset-4 bg-secondary rounded-[3rem] -rotate-2" />
+              <div className="relative w-80 h-96 md:w-96 md:h-[28rem] rounded-[2.5rem] overflow-hidden border-4 border-popover shadow-xl">
+                <img
+                  src={heroPhoto}
+                  alt="Vaisnav Roy — Business Analytics Professional"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Floating accent */}
+              <div className="absolute -bottom-3 -left-3 w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
+                <TrendingUp className="w-7 h-7 text-primary-foreground" />
+              </div>
             </div>
           </div>
         </div>

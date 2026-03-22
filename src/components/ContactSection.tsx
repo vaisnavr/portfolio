@@ -8,21 +8,13 @@ import { Mail, Linkedin, Github, MapPin, Send, Download } from "lucide-react";
 export function ContactSection() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", subject: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     await new Promise(resolve => setTimeout(resolve, 1000));
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you within 24 hours.",
-    });
+    toast({ title: "Message sent!", description: "Thank you for reaching out. I'll get back to you within 24 hours." });
     setFormData({ name: "", email: "", subject: "", message: "" });
     setIsSubmitting(false);
   };
@@ -32,44 +24,21 @@ export function ContactSection() {
   };
 
   const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "vaisnav.roy@gmail.com",
-      href: "mailto:vaisnav.roy@gmail.com",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "linkedin.com/in/vaisnavroy",
-      href: "https://linkedin.com/in/vaisnavroy",
-    },
-    {
-      icon: Github,
-      label: "GitHub",
-      value: "github.com/vaisnavr",
-      href: "https://github.com/vaisnavr",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Los Angeles, CA",
-      href: null,
-    },
+    { icon: Mail, label: "Email", value: "vaisnav.roy@gmail.com", href: "mailto:vaisnav.roy@gmail.com" },
+    { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/vaisnavroy", href: "https://linkedin.com/in/vaisnavroy" },
+    { icon: Github, label: "GitHub", value: "github.com/vaisnavr", href: "https://github.com/vaisnavr" },
+    { icon: MapPin, label: "Location", value: "Los Angeles, CA", href: null },
   ];
 
   return (
-    <section id="contact" className="py-24 bg-gradient-subtle">
+    <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <p className="text-accent font-medium mb-4">Get in Touch</p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Let's Connect
-            </h2>
+            <p className="text-primary font-medium mb-4">Get in Touch</p>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">Let's Connect</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              I'm actively seeking Business Analytics, Product Analytics, and Strategy roles. 
-              Let's discuss how I can contribute to your team.
+              I'm actively seeking Business Analytics, Product Analytics, and Strategy roles. Let's discuss how I can contribute to your team.
             </p>
           </div>
 
@@ -77,31 +46,21 @@ export function ContactSection() {
             <div className="lg:col-span-2 space-y-8">
               <div className="space-y-4">
                 {contactInfo.map((item) => (
-                  <div
-                    key={item.label}
-                    className="p-4 rounded-xl bg-card border border-border hover:border-accent/30 hover:shadow-card transition-all duration-300"
-                  >
+                  <div key={item.label} className="p-4 rounded-xl bg-popover border border-border hover:border-primary/30 hover:shadow-[0_0_25px_hsl(45_80%_60%/0.15)] transition-all duration-300">
                     {item.href ? (
-                      <a
-                        href={item.href}
-                        target={item.href.startsWith("http") ? "_blank" : undefined}
-                        rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="flex items-center gap-4 group"
-                      >
-                        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent/20 transition-colors">
-                          <item.icon className="w-5 h-5 text-accent" />
+                      <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined} className="flex items-center gap-4 group">
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
+                          <item.icon className="w-5 h-5 text-primary" />
                         </div>
                         <div>
                           <p className="text-sm text-muted-foreground">{item.label}</p>
-                          <p className="font-medium text-foreground group-hover:text-accent transition-colors">
-                            {item.value}
-                          </p>
+                          <p className="font-medium text-foreground group-hover:text-primary transition-colors">{item.value}</p>
                         </div>
                       </a>
                     ) : (
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center shrink-0">
-                          <item.icon className="w-5 h-5 text-accent" />
+                        <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                          <item.icon className="w-5 h-5 text-primary" />
                         </div>
                         <div>
                           <p className="text-sm text-muted-foreground">{item.label}</p>
@@ -113,28 +72,18 @@ export function ContactSection() {
                 ))}
               </div>
 
-              <div className="p-6 rounded-2xl bg-primary/5 border border-primary/20">
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">
-                  Download Resume
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Get a detailed overview of my experience, skills, and qualifications.
-                </p>
+              <div className="p-6 rounded-2xl bg-primary/5 border border-primary/15">
+                <h3 className="font-display text-lg font-semibold text-foreground mb-2">Download Resume</h3>
+                <p className="text-sm text-muted-foreground mb-4">Get a detailed overview of my experience, skills, and qualifications.</p>
                 <Button variant="hero" className="w-full" asChild>
-                  <a href="/resume.pdf" download>
-                    <Download size={18} />
-                    Download PDF Resume
-                  </a>
+                  <a href="/resume.pdf" download><Download size={18} />Download PDF Resume</a>
                 </Button>
               </div>
             </div>
 
             <div className="lg:col-span-3">
-              <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-card border border-border shadow-card">
-                <h3 className="font-display text-xl font-semibold text-foreground mb-6">
-                  Send a Message
-                </h3>
-                
+              <form onSubmit={handleSubmit} className="p-8 rounded-2xl bg-popover border border-border shadow-md">
+                <h3 className="font-display text-xl font-semibold text-foreground mb-6">Send a Message</h3>
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">Name</label>
@@ -145,17 +94,14 @@ export function ContactSection() {
                     <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="your@email.com" required className="bg-background" />
                   </div>
                 </div>
-
                 <div className="mb-4">
                   <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">Subject</label>
                   <Input id="subject" name="subject" value={formData.subject} onChange={handleChange} placeholder="What's this about?" required className="bg-background" />
                 </div>
-
                 <div className="mb-6">
                   <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">Message</label>
                   <Textarea id="message" name="message" value={formData.message} onChange={handleChange} placeholder="Tell me about the opportunity or how I can help..." rows={5} required className="bg-background resize-none" />
                 </div>
-
                 <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? "Sending..." : (<><Send size={18} />Send Message</>)}
                 </Button>
