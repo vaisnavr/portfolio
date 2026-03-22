@@ -33,6 +33,12 @@ export function ContactSection() {
 
   const contactInfo = [
     {
+      icon: Phone,
+      label: "Phone",
+      value: "+1 (213) 681-9522",
+      href: "tel:+12136819522",
+    },
+    {
       icon: Mail,
       label: "Email",
       value: "vaisnav.roy@gmail.com",

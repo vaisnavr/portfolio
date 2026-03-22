@@ -16,6 +16,9 @@ export function Footer() {
             </div>
 
             <div className="flex items-center gap-4">
+              <a href="tel:+12136819522" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors" aria-label="Phone">
+                <Phone size={18} />
+              </a>
               <a href="https://linkedin.com/in/vaisnavroy" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors" aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
