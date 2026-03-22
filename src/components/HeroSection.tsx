@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Mail, TrendingUp, BarChart3, PieChart, Megaphone, Settings, Briefcase } from "lucide-react";
+import { ArrowRight, Download, Mail, TrendingUp, BarChart3, PieChart, CheckCircle2, XCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import profilePhoto from "@/assets/profile-photo.png";
 
-const MOVES = [
-  { icon: Megaphone, label: "Marketing", correct: false },
-  { icon: Settings, label: "Product", correct: true },
-  { icon: Briefcase, label: "Sales", correct: false },
+const QUIZ_OPTIONS = [
+  { label: "A", text: "Increase Marketing Spend", correct: false },
+  { label: "B", text: "Audit the Technical Implementation & Cross-functional Alignment", correct: true },
+  { label: "C", text: "Hire more Sales Reps", correct: false },
 ];
 
 function useCountUp(target: number, start: boolean, duration = 1800, suffix = "") {
@@ -31,29 +31,65 @@ function useCountUp(target: number, start: boolean, duration = 1800, suffix = ""
   return `${value}${suffix}`;
 }
 
+function GlitchOverlay({ active, onDone }: { active: boolean; onDone: () => void }) {
+  useEffect(() => {
+    if (active) {
+      const timer = setTimeout(onDone, 1200);
+      return () => clearTimeout(timer);
+    }
+  }, [active, onDone]);
+
+  if (!active) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] pointer-events-none">
+      <div className="absolute inset-0 animate-[glitch-wipe_1.2s_ease-in-out_forwards]">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute left-0 right-0 bg-primary/90"
+            style={{
+              top: `${(i / 12) * 100}%`,
+              height: `${100 / 12}%`,
+              animationDelay: `${i * 40}ms`,
+              animation: `glitch-bar 0.8s ${i * 40}ms ease-in-out forwards`,
+              opacity: 0,
+            }}
+          />
+        ))}
+      </div>
+      <div className="absolute inset-0 bg-primary/20 animate-[flash_0.6s_0.4s_ease-out_forwards] opacity-0" />
+    </div>
+  );
+}
+
 export function HeroSection() {
-  const [phase, setPhase] = useState<"challenge" | "wrong" | "reveal" | "profile">("challenge");
-  const [wrongLabel, setWrongLabel] = useState("");
+  const [phase, setPhase] = useState<"quiz" | "transitioning" | "profile">("quiz");
+  const [selectedOption, setSelectedOption] = useState<number | null>(null);
+  const [wrongPick, setWrongPick] = useState<number | null>(null);
   const [statsVisible, setStatsVisible] = useState(false);
 
   const stat1 = useCountUp(15, statsVisible, 1500, "+");
   const stat2 = useCountUp(3, statsVisible, 1200, "");
   const stat3 = useCountUp(2, statsVisible, 1800, "M+");
 
-  const handleMove = useCallback((move: typeof MOVES[0]) => {
-    if (phase !== "challenge" && phase !== "wrong") return;
+  const handleOptionClick = useCallback((index: number) => {
+    if (selectedOption !== null) return;
+    const option = QUIZ_OPTIONS[index];
 
-    if (!move.correct) {
-      setWrongLabel(move.label);
-      setPhase("wrong");
-      setTimeout(() => setPhase("challenge"), 1500);
+    if (!option.correct) {
+      setWrongPick(index);
+      setTimeout(() => setWrongPick(null), 800);
       return;
     }
 
-    setPhase("reveal");
-  }, [phase]);
+    setSelectedOption(index);
+    setTimeout(() => {
+      setPhase("transitioning");
+    }, 600);
+  }, [selectedOption]);
 
-  const handleSeeApproach = useCallback(() => {
+  const handleTransitionDone = useCallback(() => {
     setPhase("profile");
     toast({
       title: "Exactly. That's where I come in.",
@@ -62,105 +98,105 @@ export function HeroSection() {
     setTimeout(() => setStatsVisible(true), 400);
   }, []);
 
-  // ── Challenge / Reveal Phase ──
-  if (phase !== "profile") {
+  // ── Quiz Phase ──
+  if (phase === "quiz" || phase === "transitioning") {
     return (
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-background">
-        {/* Subtle grid */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }} />
+      <>
+        <GlitchOverlay active={phase === "transitioning"} onDone={handleTransitionDone} />
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+          {/* Subtle grid */}
+          <div className="absolute inset-0 opacity-[0.04]" style={{
+            backgroundImage: "linear-gradient(hsl(239,84%,67%) 1px, transparent 1px), linear-gradient(90deg, hsl(239,84%,67%) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }} />
 
-        <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+          {/* Floating accents */}
+          <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-primary/8 rounded-full blur-3xl" />
 
-        <div className="relative z-10 max-w-lg w-full mx-6 text-center">
-          {phase === "reveal" ? (
-            /* ── Reveal Card ── */
-            <div className="animate-[fadeIn_0.5s_ease-out_forwards]">
-              <div className="glass rounded-2xl p-8 md:p-10">
-                <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center mx-auto mb-5">
-                  <Settings className="text-primary" size={24} />
-                </div>
-                <p className="text-foreground text-lg md:text-xl font-semibold leading-relaxed mb-2">
-                  Here's what I'd do—and why most teams get this wrong.
-                </p>
-                <p className="text-muted-foreground text-sm mb-8">
-                  It's never just one lever. It's about auditing the full system.
-                </p>
-                <Button variant="hero" size="lg" onClick={handleSeeApproach}>
-                  See my approach
-                  <ArrowRight size={18} />
-                </Button>
-              </div>
+          <div className={`relative z-10 max-w-2xl w-full mx-6 transition-all duration-500 ${selectedOption !== null ? "scale-95 opacity-60" : ""}`}>
+            {/* Challenge badge */}
+            <div className="flex items-center gap-2 mb-6">
+              <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse-subtle" />
+              <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">
+                Business Logic Challenge
+              </span>
             </div>
-          ) : (
-            /* ── Challenge Card ── */
-            <div>
-              {/* Scenario */}
-              <div className="glass rounded-2xl p-8 md:p-10 mb-8">
-                <div className="flex items-center gap-3 justify-center mb-6">
-                  <span className="text-2xl">📉</span>
-                  <h2 className="font-display text-xl md:text-2xl font-bold text-foreground">
-                    Adoption dropped 25%
-                  </h2>
-                </div>
-                <p className="text-muted-foreground text-lg">
-                  What's your first move?
-                </p>
-              </div>
 
-              {/* Move Buttons */}
-              <div className="flex items-center justify-center gap-4 mb-6">
-                {MOVES.map((move) => {
-                  const Icon = move.icon;
-                  const isWrongPick = phase === "wrong" && wrongLabel === move.label;
+            {/* Card */}
+            <div className="glass rounded-2xl p-8 md:p-10 shadow-2xl">
+              <h2 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-8">
+                A high-growth Fintech firm is seeing a{" "}
+                <span className="text-primary">25% drop</span> in product adoption.{" "}
+                <span className="text-muted-foreground">What's the first lever you pull?</span>
+              </h2>
+
+              <div className="space-y-3">
+                {QUIZ_OPTIONS.map((option, i) => {
+                  const isWrong = wrongPick === i;
+                  const isSelected = selectedOption === i;
 
                   return (
                     <button
-                      key={move.label}
-                      onClick={() => handleMove(move)}
-                      disabled={phase === "wrong"}
+                      key={i}
+                      onClick={() => handleOptionClick(i)}
+                      disabled={selectedOption !== null}
                       className={`
-                        group flex flex-col items-center gap-2 px-6 py-5 rounded-xl border transition-all duration-300
-                        ${isWrongPick
+                        w-full text-left rounded-xl border px-5 py-4 transition-all duration-300 group
+                        ${isWrong
                           ? "border-destructive/60 bg-destructive/10 animate-[shake_0.4s_ease-in-out]"
-                          : "border-border bg-background/50 hover:border-primary/50 hover:bg-primary/5 hover:scale-105 active:scale-95"
+                          : isSelected
+                            ? "border-primary bg-primary/15 shadow-glow"
+                            : "border-border bg-background/50 hover:border-primary/40 hover:bg-secondary/50"
                         }
                       `}
                     >
-                      <Icon
-                        size={28}
-                        className={`transition-colors ${isWrongPick ? "text-destructive" : "text-muted-foreground group-hover:text-primary"}`}
-                      />
-                      <span className={`text-sm font-medium transition-colors ${isWrongPick ? "text-destructive" : "text-foreground/80 group-hover:text-foreground"}`}>
-                        {move.label}
-                      </span>
+                      <div className="flex items-start gap-4">
+                        <span className={`
+                          flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold transition-colors
+                          ${isWrong
+                            ? "bg-destructive/20 text-destructive"
+                            : isSelected
+                              ? "bg-primary text-primary-foreground"
+                              : "bg-secondary text-muted-foreground group-hover:text-primary"
+                          }
+                        `}>
+                          {isWrong ? <XCircle size={16} /> : isSelected ? <CheckCircle2 size={16} /> : option.label}
+                        </span>
+                        <span className={`
+                          text-sm md:text-base font-medium leading-relaxed transition-colors
+                          ${isWrong
+                            ? "text-destructive/80"
+                            : isSelected
+                              ? "text-primary"
+                              : "text-foreground/80 group-hover:text-foreground"
+                          }
+                        `}>
+                          {option.text}
+                        </span>
+                      </div>
                     </button>
                   );
                 })}
               </div>
 
-              {/* Wrong feedback */}
-              {phase === "wrong" && (
-                <p className="text-destructive/80 text-sm animate-[fadeIn_0.3s_ease-out]">
-                  Not quite — think bigger.
-                </p>
-              )}
+              <p className="text-muted-foreground text-xs mt-6 text-center">
+                Choose wisely — your answer reveals something about your approach.
+              </p>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        </section>
+      </>
     );
   }
 
   // ── Profile Phase ──
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+      {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/8 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
         <div className="absolute top-1/4 left-[15%] text-primary/20 animate-float" style={{ animationDelay: "0.5s" }}>
           <TrendingUp size={48} />
         </div>
@@ -174,6 +210,7 @@ export function HeroSection() {
 
       <div className="container mx-auto px-6 py-20 pt-32 relative z-10">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Left: Text Content */}
           <div className="flex-1 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.1s" }}>
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse-subtle" />
@@ -215,6 +252,7 @@ export function HeroSection() {
             </div>
           </div>
 
+          {/* Right: Profile Photo with cinematic entrance */}
           <div className="flex-shrink-0 animate-hero-photo opacity-0" style={{ animationDelay: "0.3s" }}>
             <div className="relative">
               <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent blur-xl animate-pulse-subtle" />
@@ -232,6 +270,7 @@ export function HeroSection() {
           </div>
         </div>
 
+        {/* Animated Stats */}
         <div className="grid grid-cols-3 gap-8 max-w-4xl mx-auto mt-20 pt-12 border-t border-border/50 animate-fade-in-up opacity-0" style={{ animationDelay: "0.6s" }}>
           <div className="text-center">
             <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat1}</p>
@@ -248,6 +287,7 @@ export function HeroSection() {
         </div>
       </div>
 
+      {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-2">
           <div className="w-1 h-2 bg-muted-foreground/50 rounded-full" />
