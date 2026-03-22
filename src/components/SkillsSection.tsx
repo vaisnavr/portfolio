@@ -22,7 +22,7 @@ const skillCategories = [
   {
     title: "Visualization & BI",
     icon: BarChart2,
-    color: "primary",
+    color: "accent",
     skills: [
       { name: "Tableau", level: 92 },
       { name: "Power BI", level: 90 },
@@ -48,7 +48,7 @@ const skillCategories = [
   {
     title: "Tools & Platforms",
     icon: Layers,
-    color: "primary",
+    color: "accent",
     skills: [
       { name: "Excel (VBA, Power Query)", level: 95 },
       { name: "Snowflake", level: 88 },
