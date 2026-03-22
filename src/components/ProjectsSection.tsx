@@ -116,7 +116,7 @@ const projects: Project[] = [
       { icon: Users, label: "Research" },
       { icon: Briefcase, label: "Strategy" },
     ],
-    github: "https://github.com/vaisnavr",
+    github: "https://github.com/vaisnavr/Digital-Twin-RAG-Model",
   },
   {
     title: "AI-Driven Compliance Rule Engine",
