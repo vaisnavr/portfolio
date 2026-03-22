@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Linkedin, Github, MapPin, Send, Download } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Send, Download, Phone } from "lucide-react";
 
 export function ContactSection() {
   const { toast } = useToast();
@@ -32,6 +32,12 @@ export function ContactSection() {
   };
 
   const contactInfo = [
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+1 (213) 681-9522",
+      href: "tel:+12136819522",
+    },
     {
       icon: Mail,
       label: "Email",
