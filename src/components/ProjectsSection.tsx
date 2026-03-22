@@ -80,7 +80,7 @@ const projects: Project[] = [
       { icon: BarChart3, label: "Analytics" },
       { icon: Users, label: "Product" },
     ],
-    github: "https://github.com/vaisnavr",
+    github: "https://github.com/vaisnavr/Everlane-Marketing-Brand-Analytics-Pipeline",
   },
   {
     title: "Digital Twin RAG Model",
@@ -116,7 +116,7 @@ const projects: Project[] = [
       { icon: Users, label: "Research" },
       { icon: Briefcase, label: "Strategy" },
     ],
-    github: "https://github.com/vaisnavr",
+    github: "https://github.com/vaisnavr/Digital-Twin-RAG-Model",
   },
   {
     title: "AI-Driven Compliance Rule Engine",
@@ -224,7 +224,7 @@ const projects: Project[] = [
       { icon: Users, label: "Research" },
       { icon: Lightbulb, label: "Strategy" },
     ],
-    github: "https://github.com/vaisnavr",
+    github: "https://github.com/vaisnavr/Wine-Quality-vs-Price-A-Data-Driven-Analysis",
   },
 ];
 
