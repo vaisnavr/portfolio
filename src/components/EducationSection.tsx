@@ -1,4 +1,6 @@
-import { GraduationCap, Award, BookOpen } from "lucide-react";
+import { Award, BookOpen } from "lucide-react";
+import uscLogo from "@/assets/usc-logo.png";
+import kiitLogo from "@/assets/kiit-logo.png";
 
 const education = [
   {
@@ -6,6 +8,7 @@ const education = [
     school: "University of Southern California, Marshall School of Business",
     period: "2024 – 2026",
     gpa: "3.6/4.0",
+    logo: uscLogo,
     coursework: [
       "SQL & Python",
       "ETL & Data Warehousing",
@@ -19,6 +22,7 @@ const education = [
     school: "Kalinga Institute of Industrial Technology",
     period: "2018 – 2022",
     gpa: "9.2/10",
+    logo: kiitLogo,
     coursework: [
       "Data Structures & Algorithms",
       "Database Management Systems",
@@ -82,8 +86,8 @@ export function EducationSection() {
                 className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300"
               >
                 <div className="flex flex-col md:flex-row md:items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <GraduationCap className="w-8 h-8 text-primary" />
+                  <div className="w-16 h-16 rounded-2xl bg-card border border-border flex items-center justify-center shrink-0 overflow-hidden">
+                    <img src={edu.logo} alt={`${edu.school} logo`} className="w-12 h-12 object-contain" />
                   </div>
                   <div className="flex-1">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
