@@ -107,7 +107,7 @@ export function ExperienceSection() {
 
                         <ul className="space-y-3">
                           {exp.highlights.map((highlight, hIndex) => (
-                            <li key={hIndex} className="flex items-start gap-3 text-muted-foreground">
+                            <li key={hIndex} className="flex items-start gap-3 text-foreground">
                               <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
                               <span>{highlight}</span>
                             </li>
