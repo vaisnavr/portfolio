@@ -85,24 +85,24 @@ export function EducationSection() {
                 key={index}
                 className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300 group"
               >
-                <div className="flex flex-col md:flex-row gap-6">
-                  {/* Logo - shown above text on mobile */}
-                  <div className="flex justify-center md:hidden py-2">
-                    <img
-                      src={edu.logo}
-                      alt={`${edu.school} logo`}
-                      className="max-h-[70px] max-w-[120px] object-contain mix-blend-multiply group-hover:drop-shadow-[0_0_12px_hsl(var(--accent)/0.5)] group-hover:scale-105 transition-all duration-500"
-                    />
-                  </div>
+                {/* Mobile: logo above text */}
+                <div className="flex justify-center md:hidden py-2">
+                  <img
+                    src={edu.logo}
+                    alt={`${edu.school} logo`}
+                    className="h-[60px] max-w-[120px] object-contain mix-blend-multiply group-hover:drop-shadow-[0_0_12px_hsl(var(--accent)/0.5)] group-hover:scale-105 transition-all duration-500"
+                  />
+                </div>
 
-                  {/* Text content - 75% */}
-                  <div className="flex-[3]">
+                {/* Desktop: 70/30 grid */}
+                <div className="grid md:grid-cols-[70%_30%] gap-12">
+                  <div>
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
                       <div>
-                        <h3 className="font-display text-xl font-semibold text-foreground">
+                        <h3 className="font-display text-[20px] font-bold text-foreground">
                           {edu.degree}
                         </h3>
-                        <p className="text-accent font-medium">{edu.school}</p>
+                        <p className="text-accent font-semibold text-[18px]">{edu.school}</p>
                       </div>
                       <div className="text-sm text-muted-foreground text-left md:text-right">
                         <p>{edu.period}</p>
@@ -127,12 +127,12 @@ export function EducationSection() {
                     </div>
                   </div>
 
-                  {/* Logo - right side on desktop, 25% */}
-                  <div className="hidden md:flex flex-[1] items-center justify-center pl-10">
+                  {/* Logo column */}
+                  <div className="hidden md:flex items-center justify-center">
                     <img
                       src={edu.logo}
                       alt={`${edu.school} logo`}
-                      className="min-w-[160px] max-h-[90px] object-contain mix-blend-multiply group-hover:drop-shadow-[0_0_16px_hsl(var(--accent)/0.45)] group-hover:scale-105 transition-all duration-500"
+                      className="h-[80px] w-auto object-contain mix-blend-multiply group-hover:drop-shadow-[0_0_16px_hsl(var(--accent)/0.45)] group-hover:scale-105 transition-all duration-500"
                     />
                   </div>
                 </div>
