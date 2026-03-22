@@ -48,7 +48,7 @@ const skillCategories = [
   {
     title: "Tools & Platforms",
     icon: Layers,
-    color: "primary",
+    color: "accent",
     skills: [
       { name: "Excel (VBA, Power Query)", level: 95 },
       { name: "Snowflake", level: 88 },
