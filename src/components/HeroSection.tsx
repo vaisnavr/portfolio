@@ -197,7 +197,6 @@ export function HeroSection() {
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/8 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
-
         <div className="absolute top-1/4 left-[15%] text-primary/20 animate-float" style={{ animationDelay: "0.5s" }}>
           <TrendingUp size={48} />
         </div>
@@ -210,65 +209,80 @@ export function HeroSection() {
       </div>
 
       <div className="container mx-auto px-6 py-20 pt-32 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.1s" }}>
-            <span className="w-2 h-2 bg-primary rounded-full animate-pulse-subtle" />
-            Open to Opportunities
+        <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Left: Text Content */}
+          <div className="flex-1 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.1s" }}>
+              <span className="w-2 h-2 bg-primary rounded-full animate-pulse-subtle" />
+              Open to Opportunities
+            </div>
+
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
+              Vaisnav Roy
+            </h1>
+
+            <p className="font-display text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.3s" }}>
+              <span className="text-gradient">The Bridge Between Data and Impact.</span>
+            </p>
+
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
+              Expert in Product Implementation, Business Strategy, and RevOps.
+              I don't just analyze data—I drive the cross-functional adoption that delivers results.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.5s" }}>
+              <Button variant="hero" size="xl" asChild>
+                <a href="#projects">
+                  View Projects
+                  <ArrowRight size={20} />
+                </a>
+              </Button>
+              <Button variant="hero-outline" size="xl" asChild>
+                <a href="/resume.pdf" download>
+                  <Download size={20} />
+                  Download Resume
+                </a>
+              </Button>
+              <Button variant="outline" size="xl" asChild>
+                <a href="#contact">
+                  <Mail size={20} />
+                  Contact Me
+                </a>
+              </Button>
+            </div>
           </div>
 
-          {/* Name */}
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 animate-fade-in-up opacity-0" style={{ animationDelay: "0.2s" }}>
-            Vaisnav Roy
-          </h1>
-
-          {/* Headline */}
-          <p className="font-display text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.3s" }}>
-            <span className="text-gradient">The Bridge Between Data and Impact.</span>
-          </p>
-
-          {/* Sub-headline */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
-            Expert in Product Implementation, Business Strategy, and RevOps.
-            I don't just analyze data—I drive the cross-functional adoption that delivers results.
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.5s" }}>
-            <Button variant="hero" size="xl" asChild>
-              <a href="#projects">
-                View Projects
-                <ArrowRight size={20} />
-              </a>
-            </Button>
-            <Button variant="hero-outline" size="xl" asChild>
-              <a href="/resume.pdf" download>
-                <Download size={20} />
-                Download Resume
-              </a>
-            </Button>
-            <Button variant="outline" size="xl" asChild>
-              <a href="#contact">
-                <Mail size={20} />
-                Contact Me
-              </a>
-            </Button>
+          {/* Right: Profile Photo with cinematic entrance */}
+          <div className="flex-shrink-0 animate-hero-photo opacity-0" style={{ animationDelay: "0.3s" }}>
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-primary/30 via-primary/10 to-transparent blur-xl animate-pulse-subtle" />
+              <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-primary/30 shadow-2xl ring-1 ring-primary/10">
+                <img
+                  src={profilePhoto}
+                  alt="Vaisnav Roy — Business Analytics Professional"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-primary/15 border border-primary/25 flex items-center justify-center backdrop-blur-sm">
+                <span className="text-primary text-lg">✦</span>
+              </div>
+            </div>
           </div>
+        </div>
 
-          {/* Animated Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-20 pt-12 border-t border-border/50 animate-fade-in-up opacity-0" style={{ animationDelay: "0.6s" }}>
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat1}</p>
-              <p className="text-sm text-muted-foreground mt-1">Analytics Projects</p>
-            </div>
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat2}</p>
-              <p className="text-sm text-muted-foreground mt-1">Industries Explored</p>
-            </div>
-            <div className="text-center">
-              <p className="font-display text-3xl md:text-4xl font-bold text-foreground">${stat3}</p>
-              <p className="text-sm text-muted-foreground mt-1">Business Impact</p>
-            </div>
+        {/* Animated Stats */}
+        <div className="grid grid-cols-3 gap-8 max-w-4xl mx-auto mt-20 pt-12 border-t border-border/50 animate-fade-in-up opacity-0" style={{ animationDelay: "0.6s" }}>
+          <div className="text-center">
+            <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat1}</p>
+            <p className="text-sm text-muted-foreground mt-1">Analytics Projects</p>
+          </div>
+          <div className="text-center">
+            <p className="font-display text-3xl md:text-4xl font-bold text-foreground">{stat2}</p>
+            <p className="text-sm text-muted-foreground mt-1">Industries Explored</p>
+          </div>
+          <div className="text-center">
+            <p className="font-display text-3xl md:text-4xl font-bold text-foreground">${stat3}</p>
+            <p className="text-sm text-muted-foreground mt-1">Business Impact</p>
           </div>
         </div>
       </div>
