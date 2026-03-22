@@ -356,7 +356,7 @@ export function ProjectsSection() {
   const categories: { key: ProjectCategory; label: string }[] = [
     { key: "all", label: "All Projects" },
     { key: "fintech", label: "Fintech Projects" },
-    { key: "strategy", label: "Strategy Projects" },
+    { key: "strategy", label: "AI & Strategy Projects" },
   ];
 
   return (
