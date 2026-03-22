@@ -90,7 +90,7 @@ export function EducationSection() {
                   <img
                     src={edu.logo}
                     alt={`${edu.school} logo`}
-                    className="h-[60px] max-w-[120px] object-contain mix-blend-multiply group-hover:drop-shadow-[0_0_12px_hsl(var(--accent)/0.5)] group-hover:scale-105 transition-all duration-500"
+                    className="h-[60px] max-w-[120px] object-contain group-hover:drop-shadow-[0_0_12px_hsl(var(--accent)/0.5)] group-hover:scale-105 transition-all duration-500"
                   />
                 </div>
 
