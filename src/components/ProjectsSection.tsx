@@ -224,7 +224,7 @@ const projects: Project[] = [
       { icon: Users, label: "Research" },
       { icon: Lightbulb, label: "Strategy" },
     ],
-    github: "https://github.com/vaisnavr",
+    github: "https://github.com/vaisnavr/Wine-Quality-vs-Price-A-Data-Driven-Analysis",
   },
 ];
 
