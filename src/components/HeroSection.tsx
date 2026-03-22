@@ -42,12 +42,11 @@ function GlitchOverlay({ active, onDone }: { active: boolean; onDone: () => void
 
   return (
     <div className="fixed inset-0 z-[100] pointer-events-none">
-      {/* Glitch bars */}
       <div className="absolute inset-0 animate-[glitch-wipe_1.2s_ease-in-out_forwards]">
         {Array.from({ length: 12 }).map((_, i) => (
           <div
             key={i}
-            className="absolute left-0 right-0 bg-accent/90"
+            className="absolute left-0 right-0 bg-primary/90"
             style={{
               top: `${(i / 12) * 100}%`,
               height: `${100 / 12}%`,
@@ -58,8 +57,7 @@ function GlitchOverlay({ active, onDone }: { active: boolean; onDone: () => void
           />
         ))}
       </div>
-      {/* Flash */}
-      <div className="absolute inset-0 bg-accent/20 animate-[flash_0.6s_0.4s_ease-out_forwards] opacity-0" />
+      <div className="absolute inset-0 bg-primary/20 animate-[flash_0.6s_0.4s_ease-out_forwards] opacity-0" />
     </div>
   );
 }
@@ -104,32 +102,32 @@ export function HeroSection() {
     return (
       <>
         <GlitchOverlay active={phase === "transitioning"} onDone={handleTransitionDone} />
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[hsl(220,30%,8%)]">
-          {/* Subtle grid background */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+          {/* Subtle grid */}
           <div className="absolute inset-0 opacity-[0.04]" style={{
-            backgroundImage: "linear-gradient(hsl(175,60%,40%) 1px, transparent 1px), linear-gradient(90deg, hsl(175,60%,40%) 1px, transparent 1px)",
+            backgroundImage: "linear-gradient(hsl(239,84%,67%) 1px, transparent 1px), linear-gradient(90deg, hsl(239,84%,67%) 1px, transparent 1px)",
             backgroundSize: "60px 60px",
           }} />
 
           {/* Floating accents */}
-          <div className="absolute top-20 right-20 w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute top-20 right-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-primary/8 rounded-full blur-3xl" />
 
           <div className={`relative z-10 max-w-2xl w-full mx-6 transition-all duration-500 ${selectedOption !== null ? "scale-95 opacity-60" : ""}`}>
             {/* Challenge badge */}
             <div className="flex items-center gap-2 mb-6">
-              <span className="inline-block w-2 h-2 rounded-full bg-accent animate-pulse-subtle" />
-              <span className="text-accent text-xs font-semibold tracking-[0.2em] uppercase">
+              <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse-subtle" />
+              <span className="text-primary text-xs font-semibold tracking-[0.2em] uppercase">
                 Business Logic Challenge
               </span>
             </div>
 
             {/* Card */}
-            <div className="rounded-2xl border border-[hsl(220,25%,18%)] bg-[hsl(220,30%,11%)] p-8 md:p-10 shadow-2xl">
-              <h2 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-[hsl(40,20%,98%)] leading-tight mb-8">
+            <div className="glass rounded-2xl p-8 md:p-10 shadow-2xl">
+              <h2 className="font-display text-xl md:text-2xl lg:text-3xl font-bold text-foreground leading-tight mb-8">
                 A high-growth Fintech firm is seeing a{" "}
-                <span className="text-accent">25% drop</span> in product adoption.{" "}
-                <span className="text-[hsl(220,15%,60%)]">What's the first lever you pull?</span>
+                <span className="text-primary">25% drop</span> in product adoption.{" "}
+                <span className="text-muted-foreground">What's the first lever you pull?</span>
               </h2>
 
               <div className="space-y-3">
@@ -147,8 +145,8 @@ export function HeroSection() {
                         ${isWrong
                           ? "border-destructive/60 bg-destructive/10 animate-[shake_0.4s_ease-in-out]"
                           : isSelected
-                            ? "border-accent bg-accent/15 shadow-glow"
-                            : "border-[hsl(220,25%,20%)] bg-[hsl(220,30%,9%)] hover:border-accent/40 hover:bg-[hsl(220,30%,13%)]"
+                            ? "border-primary bg-primary/15 shadow-glow"
+                            : "border-border bg-background/50 hover:border-primary/40 hover:bg-secondary/50"
                         }
                       `}
                     >
@@ -158,8 +156,8 @@ export function HeroSection() {
                           ${isWrong
                             ? "bg-destructive/20 text-destructive"
                             : isSelected
-                              ? "bg-accent text-[hsl(220,30%,8%)]"
-                              : "bg-[hsl(220,25%,18%)] text-[hsl(220,15%,60%)] group-hover:text-accent"
+                              ? "bg-primary text-primary-foreground"
+                              : "bg-secondary text-muted-foreground group-hover:text-primary"
                           }
                         `}>
                           {isWrong ? <XCircle size={16} /> : isSelected ? <CheckCircle2 size={16} /> : option.label}
@@ -169,8 +167,8 @@ export function HeroSection() {
                           ${isWrong
                             ? "text-destructive/80"
                             : isSelected
-                              ? "text-accent"
-                              : "text-[hsl(40,20%,90%)] group-hover:text-[hsl(40,20%,98%)]"
+                              ? "text-primary"
+                              : "text-foreground/80 group-hover:text-foreground"
                           }
                         `}>
                           {option.text}
@@ -181,7 +179,7 @@ export function HeroSection() {
                 })}
               </div>
 
-              <p className="text-[hsl(220,15%,45%)] text-xs mt-6 text-center">
+              <p className="text-muted-foreground text-xs mt-6 text-center">
                 Choose wisely — your answer reveals something about your approach.
               </p>
             </div>
@@ -193,19 +191,19 @@ export function HeroSection() {
 
   // ── Profile Phase ──
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-subtle">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-accent/5 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/8 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
 
-        <div className="absolute top-1/4 left-[15%] text-accent/20 animate-float" style={{ animationDelay: "0.5s" }}>
+        <div className="absolute top-1/4 left-[15%] text-primary/20 animate-float" style={{ animationDelay: "0.5s" }}>
           <TrendingUp size={48} />
         </div>
         <div className="absolute top-1/3 right-[20%] text-primary/15 animate-float" style={{ animationDelay: "1.5s" }}>
           <BarChart3 size={56} />
         </div>
-        <div className="absolute bottom-1/3 left-[25%] text-accent/15 animate-float" style={{ animationDelay: "3s" }}>
+        <div className="absolute bottom-1/3 left-[25%] text-primary/15 animate-float" style={{ animationDelay: "3s" }}>
           <PieChart size={40} />
         </div>
       </div>
@@ -213,8 +211,8 @@ export function HeroSection() {
       <div className="container mx-auto px-6 py-20 pt-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.1s" }}>
-            <span className="w-2 h-2 bg-accent rounded-full animate-pulse-subtle" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.1s" }}>
+            <span className="w-2 h-2 bg-primary rounded-full animate-pulse-subtle" />
             Open to Opportunities
           </div>
 
@@ -223,7 +221,7 @@ export function HeroSection() {
             Vaisnav Roy
           </h1>
 
-          {/* New headline */}
+          {/* Headline */}
           <p className="font-display text-xl md:text-2xl lg:text-3xl text-muted-foreground mb-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.3s" }}>
             <span className="text-gradient">The Bridge Between Data and Impact.</span>
           </p>
