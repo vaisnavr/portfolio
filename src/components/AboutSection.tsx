@@ -2,27 +2,27 @@ import { Target, Lightbulb, Users, TrendingUp } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
 
 const strengths = [
-  {
-    icon: Target,
-    title: "Product Implementation",
-    description: "End-to-end project lifecycle management, from requirement gathering and UAT to Agile delivery with cross-functional teams.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Business Strategy & RevOps",
-    description: "Translating business requirements into technical specifications, driving revenue operations and SaaS metrics optimization.",
-  },
-  {
-    icon: Users,
-    title: "Cross-functional Leadership",
-    description: "Bridging marketing, sales, product, and engineering teams to drive adoption and deliver measurable business outcomes.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Data-Driven Impact",
-    description: "Building analytics pipelines, dashboards, and AI-driven solutions that enable $5.5M+ ARR retention and 30% efficiency gains.",
-  },
-];
+{
+  icon: Target,
+  title: "Product Implementation",
+  description: "End-to-end project lifecycle management, from requirement gathering and UAT to Agile delivery with cross-functional teams."
+},
+{
+  icon: Lightbulb,
+  title: "Business Strategy & RevOps",
+  description: "Translating business requirements into technical specifications, driving revenue operations and SaaS metrics optimization."
+},
+{
+  icon: Users,
+  title: "Cross-functional Leadership",
+  description: "Bridging marketing, sales, product, and engineering teams to drive adoption and deliver measurable business outcomes."
+},
+{
+  icon: TrendingUp,
+  title: "Data-Driven Impact",
+  description: "Building analytics pipelines, dashboards, and AI-driven solutions that enable $5.5M+ ARR retention and 30% efficiency gains."
+}];
+
 
 export function AboutSection() {
   return (
@@ -37,8 +37,8 @@ export function AboutSection() {
                     <img
                       src={profilePhoto}
                       alt="Vaisnav Roy — Business Analytics Professional"
-                      className="w-full h-full object-cover"
-                    />
+                      className="w-full h-full object-cover" />
+                    
                   </div>
                   <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
                     <span className="text-primary text-lg">✦</span>
@@ -54,7 +54,7 @@ export function AboutSection() {
                 <p>
                   I'm a Business Analytics graduate from <span className="text-foreground font-medium">USC Marshall School of Business</span> with 
                   3+ years of experience in product implementation, business systems analysis, and revenue operations across 
-                  <span className="text-foreground font-medium"> Financial Services, SaaS, and Fintech</span>.
+                  <span className="text-foreground font-medium"> Digital Marketing, SaaS, and Fintech</span>.
                 </p>
                 <p>
                   I don't just analyze data — I drive the cross-functional adoption that delivers results. From architecting 
@@ -69,12 +69,12 @@ export function AboutSection() {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-6">
-              {strengths.map((strength, index) => (
-                <div
-                  key={strength.title}
-                  className="group p-6 rounded-2xl glass glass-hover transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
+              {strengths.map((strength, index) =>
+              <div
+                key={strength.title}
+                className="group p-6 rounded-2xl glass glass-hover transition-all duration-300"
+                style={{ animationDelay: `${index * 0.1}s` }}>
+                
                   <div className="w-12 h-12 rounded-xl bg-primary/15 flex items-center justify-center mb-4 group-hover:bg-primary/25 transition-colors">
                     <strength.icon className="w-6 h-6 text-primary" />
                   </div>
@@ -85,11 +85,11 @@ export function AboutSection() {
                     {strength.description}
                   </p>
                 </div>
-              ))}
+              )}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 }
