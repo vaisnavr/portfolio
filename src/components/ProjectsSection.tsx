@@ -409,10 +409,10 @@ export function ProjectsSection() {
               Implementation War Room
             </p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Case Studies & Impact
+              Projects & Impact
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Each project follows the full journey — from business friction to
+              Each project follows the full journey, from business friction to
               shipped solution to measurable outcome.
             </p>
           </div>
