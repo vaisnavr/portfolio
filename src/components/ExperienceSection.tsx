@@ -12,6 +12,7 @@ const experiences = [
     period: "May 2025 – Aug 2025",
     location: "California",
     logo: logoPacvue,
+    labels: ["Revenue Operations", "Business Experimentation", "Strategic Analytics", "Data Modeling"],
     highlights: [
       "Architected modular data models and analytics pipelines to drive business experimentation, leveraging Snowflake and Tableau to identify regional growth trends and provide strategic recommendations to executive stakeholders.",
       "Communicated time-series forecasting outputs and model assumptions on $100M+ in marketing spend into clear, data-backed recommendations for technical, non-technical, and executive stakeholders, improving KPI predictability.",
