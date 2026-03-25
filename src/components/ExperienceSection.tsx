@@ -40,6 +40,7 @@ const experiences = [
     period: "Jun 2021 – Sep 2022",
     location: "India",
     logo: logoHighradius,
+    labels: ["SaaS Implementation", "Technical Consulting", "Project Management", "FinTech Solutions"],
     highlights: [
       "Improved ERP data accuracy and operational efficiency by leading ingestion, transformation, and governance of data using advanced Microsoft Excel (VLOOKUP, VBA, PivotTables) to support enterprise ERP integrations.",
       "Spearheaded 7+ end-to-end Order-to-Cash implementations by gathering business requirements, conducting UAT, and deploying customized SaaS financial models within 3-month delivery timelines, while mentoring 5 interns.",
