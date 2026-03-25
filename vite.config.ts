@@ -4,8 +4,6 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/portfolio/",   // 👈 THIS FIXES YOUR ISSUE
-
   plugins: [
     react(),
     mode === "development" && componentTagger()
