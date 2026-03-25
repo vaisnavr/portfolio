@@ -33,8 +33,9 @@ function useCountUp(target: number, start: boolean, duration = 1800, suffix = ""
 }
 
 export function HeroSection() {
-  const [phase, setPhase] = useState<"quiz" | "dissolving" | "profile">("quiz");
+  const [phase, setPhase] = useState<"quiz" | "dissolving" | "bridge" | "profile">("quiz");
   const [statsVisible, setStatsVisible] = useState(false);
+  const [bridgeVisible, setBridgeVisible] = useState(false);
 
   const stat1 = useCountUp(15, statsVisible, 1500, "+");
   const stat2 = useCountUp(3, statsVisible, 1200, "");
@@ -48,13 +49,26 @@ export function HeroSection() {
   useEffect(() => {
     if (phase === "dissolving") {
       const timer = setTimeout(() => {
-        setPhase("profile");
-        toast({
-          title: "Great instinct.",
-          description: "Welcome to my portfolio."
-        });
-        setTimeout(() => setStatsVisible(true), 400);
+        setPhase("bridge");
+        setBridgeVisible(true);
       }, 900);
+      return () => clearTimeout(timer);
+    }
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase === "bridge") {
+      const timer = setTimeout(() => {
+        setBridgeVisible(false);
+        setTimeout(() => {
+          setPhase("profile");
+          toast({
+            title: "Great instinct.",
+            description: "Welcome to my portfolio."
+          });
+          setTimeout(() => setStatsVisible(true), 400);
+        }, 600);
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, [phase]);
