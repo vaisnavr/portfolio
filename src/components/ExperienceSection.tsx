@@ -109,6 +109,19 @@ export function ExperienceSection() {
                           </div>
                         </div>
 
+                        {exp.labels && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {exp.labels.map((label, lIndex) => (
+                              <span
+                                key={lIndex}
+                                className="inline-flex items-center rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs font-medium text-accent"
+                              >
+                                {label}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+
                         <ul className="space-y-3">
                           {exp.highlights.map((highlight, hIndex) => (
                             <li key={hIndex} className="flex items-start gap-3 text-foreground">
