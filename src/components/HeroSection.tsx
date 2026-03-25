@@ -68,7 +68,7 @@ export function HeroSection() {
           });
           setTimeout(() => setStatsVisible(true), 400);
         }, 600);
-      }, 5000);
+      }, 7000);
       return () => clearTimeout(timer);
     }
   }, [phase]);
