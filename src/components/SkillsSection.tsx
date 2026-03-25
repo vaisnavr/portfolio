@@ -53,37 +53,22 @@ export function SkillsSection() {
                 className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                    category.color === "accent" ? "bg-accent/10" : "bg-primary/10"
-                  }`}>
-                    <category.icon className={`w-6 h-6 ${
-                      category.color === "accent" ? "text-accent" : "text-primary"
-                    }`} />
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-accent/10">
+                    <category.icon className="w-6 h-6 text-accent" />
                   </div>
                   <h3 className="font-display text-xl font-semibold text-foreground">
                     {category.title}
                   </h3>
                 </div>
 
-                <div className="space-y-4">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between items-center mb-1.5">
-                        <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                        <div
-                          className={`h-full rounded-full transition-all duration-1000 ease-out ${
-                            category.color === "accent" ? "bg-gradient-accent" : "bg-gradient-hero"
-                          }`}
-                          style={{ 
-                            width: `${skill.level}%`,
-                            animationDelay: `${catIndex * 0.2 + skillIndex * 0.1}s`
-                          }}
-                        />
-                      </div>
-                    </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium"
+                    >
+                      {skill}
+                    </span>
                   ))}
                 </div>
               </div>
