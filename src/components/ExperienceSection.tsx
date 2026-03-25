@@ -25,6 +25,7 @@ const experiences = [
     period: "Sep 2022 – Aug 2024",
     location: "India",
     logo: logoSprinklr,
+    labels: ["Consulting", "Marketing Tech", "Product Adoption", "System Integration", "Digital Transformation"],
     highlights: [
       "Collaborated with regional and global clients to deliver 15+ high-impact dashboards, utilizing structured thinking to transform raw datasets into testable insights for market research and consumer behavior analysis.",
       "Managed end-to-end project lifecycles for enterprise partners, synthesizing complex compliance data to identify process optimization opportunities and drive the adoption of automated analytical assets.",
