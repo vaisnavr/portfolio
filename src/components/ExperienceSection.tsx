@@ -12,6 +12,7 @@ const experiences = [
     period: "May 2025 – Aug 2025",
     location: "California",
     logo: logoPacvue,
+    labels: ["Revenue Operations", "Business Experimentation", "Strategic Analytics", "Data Modeling"],
     highlights: [
       "Architected modular data models and analytics pipelines to drive business experimentation, leveraging Snowflake and Tableau to identify regional growth trends and provide strategic recommendations to executive stakeholders.",
       "Communicated time-series forecasting outputs and model assumptions on $100M+ in marketing spend into clear, data-backed recommendations for technical, non-technical, and executive stakeholders, improving KPI predictability.",
@@ -24,6 +25,7 @@ const experiences = [
     period: "Sep 2022 – Aug 2024",
     location: "India",
     logo: logoSprinklr,
+    labels: ["Consulting", "Marketing Tech", "Product Adoption", "System Integration", "Digital Transformation"],
     highlights: [
       "Collaborated with regional and global clients to deliver 15+ high-impact dashboards, utilizing structured thinking to transform raw datasets into testable insights for market research and consumer behavior analysis.",
       "Managed end-to-end project lifecycles for enterprise partners, synthesizing complex compliance data to identify process optimization opportunities and drive the adoption of automated analytical assets.",
@@ -38,6 +40,7 @@ const experiences = [
     period: "Jun 2021 – Sep 2022",
     location: "India",
     logo: logoHighradius,
+    labels: ["SaaS Implementation", "Technical Consulting", "Project Management", "FinTech Solutions"],
     highlights: [
       "Improved ERP data accuracy and operational efficiency by leading ingestion, transformation, and governance of data using advanced Microsoft Excel (VLOOKUP, VBA, PivotTables) to support enterprise ERP integrations.",
       "Spearheaded 7+ end-to-end Order-to-Cash implementations by gathering business requirements, conducting UAT, and deploying customized SaaS financial models within 3-month delivery timelines, while mentoring 5 interns.",
@@ -105,6 +108,19 @@ export function ExperienceSection() {
                             <p>{exp.location}</p>
                           </div>
                         </div>
+
+                        {exp.labels && (
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {exp.labels.map((label, lIndex) => (
+                              <span
+                                key={lIndex}
+                                className="inline-flex items-center rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs font-medium text-accent"
+                              >
+                                {label}
+                              </span>
+                            ))}
+                          </div>
+                        )}
 
                         <ul className="space-y-3">
                           {exp.highlights.map((highlight, hIndex) => (
