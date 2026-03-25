@@ -9,54 +9,22 @@ const skillCategories = [
   {
     title: "Analytics & Data",
     icon: Database,
-    color: "accent",
-    skills: [
-      { name: "Python", level: 92 },
-      { name: "SQL (Snowflake, MySQL)", level: 95 },
-      { name: "A/B Testing & Hypothesis Testing", level: 88 },
-      { name: "Time Series Forecasting", level: 85 },
-      { name: "Data Modelling & EDA", level: 90 },
-      { name: "Segmentation & Quantitative Analysis", level: 88 },
-    ],
+    skills: ["Python", "SQL (Snowflake, MySQL)", "A/B Testing & Hypothesis Testing", "Time Series Forecasting", "Data Modelling & EDA", "Segmentation & Quantitative Analysis"],
   },
   {
     title: "Visualization & BI",
     icon: BarChart2,
-    color: "accent",
-    skills: [
-      { name: "Tableau", level: 92 },
-      { name: "Power BI", level: 90 },
-      { name: "Looker", level: 82 },
-      { name: "Data Storytelling", level: 90 },
-      { name: "Dashboard Design", level: 92 },
-      { name: "dbt", level: 78 },
-    ],
+    skills: ["Tableau", "Power BI", "Looker", "Data Storytelling", "Dashboard Design", "dbt"],
   },
   {
     title: "Consulting & Strategy",
     icon: Target,
-    color: "accent",
-    skills: [
-      { name: "Client Management", level: 92 },
-      { name: "Business Case Development", level: 90 },
-      { name: "Stakeholder Engagement", level: 92 },
-      { name: "Requirement Gathering", level: 90 },
-      { name: "Revenue Operations (RevOps)", level: 88 },
-      { name: "SaaS Metrics & KPI Design", level: 85 },
-    ],
+    skills: ["Client Management", "Business Case Development", "Stakeholder Engagement", "Requirement Gathering", "Revenue Operations (RevOps)", "SaaS Metrics & KPI Design"],
   },
   {
     title: "Tools & Platforms",
     icon: Layers,
-    color: "accent",
-    skills: [
-      { name: "Excel (VBA, Power Query)", level: 95 },
-      { name: "Snowflake", level: 88 },
-      { name: "Git & GitHub", level: 85 },
-      { name: "JIRA (Agile)", level: 90 },
-      { name: "MS Excel (PivotTables)", level: 95 },
-      { name: "Jupyter Notebooks", level: 88 },
-    ],
+    skills: ["Excel (VBA, Power Query)", "Snowflake", "Git & GitHub", "JIRA (Agile)", "MS Excel (PivotTables)", "Jupyter Notebooks"],
   },
 ];
 
