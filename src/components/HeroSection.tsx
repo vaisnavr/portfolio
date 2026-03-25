@@ -33,8 +33,9 @@ function useCountUp(target: number, start: boolean, duration = 1800, suffix = ""
 }
 
 export function HeroSection() {
-  const [phase, setPhase] = useState<"quiz" | "dissolving" | "profile">("quiz");
+  const [phase, setPhase] = useState<"quiz" | "dissolving" | "bridge" | "profile">("quiz");
   const [statsVisible, setStatsVisible] = useState(false);
+  const [bridgeVisible, setBridgeVisible] = useState(false);
 
   const stat1 = useCountUp(15, statsVisible, 1500, "+");
   const stat2 = useCountUp(3, statsVisible, 1200, "");
@@ -48,13 +49,26 @@ export function HeroSection() {
   useEffect(() => {
     if (phase === "dissolving") {
       const timer = setTimeout(() => {
-        setPhase("profile");
-        toast({
-          title: "Great instinct.",
-          description: "Welcome to my portfolio."
-        });
-        setTimeout(() => setStatsVisible(true), 400);
+        setPhase("bridge");
+        setBridgeVisible(true);
       }, 900);
+      return () => clearTimeout(timer);
+    }
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase === "bridge") {
+      const timer = setTimeout(() => {
+        setBridgeVisible(false);
+        setTimeout(() => {
+          setPhase("profile");
+          toast({
+            title: "Great instinct.",
+            description: "Welcome to my portfolio."
+          });
+          setTimeout(() => setStatsVisible(true), 400);
+        }, 600);
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, [phase]);
@@ -139,6 +153,57 @@ export function HeroSection() {
 
   }
 
+  // ── Bridge Phase ──
+  if (phase === "bridge") {
+    return (
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
+        <div className="absolute inset-0 opacity-[0.06]" style={{
+          backgroundImage: "linear-gradient(hsl(239 84% 67% / 0.4) 1px, transparent 1px), linear-gradient(90deg, hsl(239 84% 67% / 0.4) 1px, transparent 1px)",
+          backgroundSize: "60px 60px"
+        }} />
+        <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-primary/8 rounded-full blur-[100px]" />
+
+        <div className={`relative z-10 max-w-2xl mx-auto px-6 text-center transition-all duration-700 ${bridgeVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
+          <div className="flex items-center justify-center gap-3 mb-8">
+            {QUIZ_OPTIONS.map((opt, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <div
+                  className="w-10 h-10 rounded-lg bg-primary/15 border border-primary/30 flex items-center justify-center text-sm font-bold text-primary animate-scale-in opacity-0"
+                  style={{ animationDelay: `${0.2 + i * 0.3}s`, animationFillMode: "forwards" }}
+                >
+                  {opt.label}
+                </div>
+                {i < QUIZ_OPTIONS.length - 1 && (
+                  <div
+                    className="w-8 h-[2px] bg-gradient-to-r from-primary/50 to-primary/30 animate-fade-in opacity-0"
+                    style={{ animationDelay: `${0.4 + i * 0.3}s`, animationFillMode: "forwards" }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 animate-fade-in-up opacity-0" style={{ animationDelay: "1s", animationFillMode: "forwards" }}>
+            Analytics. Implementation.{" "}
+            <span className="text-gradient">Scale.</span>
+          </h2>
+
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "1.4s", animationFillMode: "forwards" }}>
+            You saw three paths — but they're not separate choices.{" "}
+            <span className="text-foreground font-medium">I bridge the gap between all three.</span>
+          </p>
+
+          <div className="flex justify-center animate-fade-in-up opacity-0" style={{ animationDelay: "1.8s", animationFillMode: "forwards" }}>
+            <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center">
+              <ArrowRight size={20} className="text-primary animate-pulse" />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   // ── Profile Phase ──
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background">
@@ -172,9 +237,8 @@ export function HeroSection() {
               <span className="text-gradient">The Bridge Between Data and Impact.</span>
             </p>
 
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>Expert in Product Implementation, Business Strategy in Fin-tech and Digital Marketing. I don't just analyze data, I drive the cross-functional adoption that delivers results.
-
-
+            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 mb-12 leading-relaxed animate-fade-in-up opacity-0" style={{ animationDelay: "0.4s" }}>
+              Expert in Product Implementation, Business Strategy in Fin-tech and Digital Marketing. I don't just analyze data, I drive the cross-functional adoption that delivers results.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 animate-fade-in-up opacity-0" style={{ animationDelay: "0.5s" }}>
@@ -207,7 +271,6 @@ export function HeroSection() {
                   src={profilePhoto}
                   alt="Vaisnav Roy — Business Analytics Professional"
                   className="w-full h-full object-cover" />
-                
               </div>
               <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-primary/15 border border-primary/25 flex items-center justify-center backdrop-blur-sm">
                 <span className="text-primary text-lg">✦</span>
@@ -237,6 +300,6 @@ export function HeroSection() {
           <div className="w-1 h-2 bg-muted-foreground/50 rounded-full" />
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 }
