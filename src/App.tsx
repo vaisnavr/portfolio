@@ -15,11 +15,11 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <HashRouter> {/* 👈 CHANGE HERE */}
+        <HashRouter basename="/portfolio">
           <Routes>
-            <Route index element={<Index />} />   {/* ✅ THIS FIXES IT */}
+            <Route path="/" element={<Index />} />
             <Route path="*" element={<NotFound />} />
-          </Routes>
+         </Routes>
         </HashRouter>
       </TooltipProvider>
     </QueryClientProvider>
