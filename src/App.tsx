@@ -17,7 +17,7 @@ const App = () => (
         <Sonner />
         <HashRouter> {/* 👈 CHANGE HERE */}
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route index element={<Index />} />   {/* ✅ THIS FIXES IT */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </HashRouter>
