@@ -1,5 +1,6 @@
-import { Target, Lightbulb, Users, TrendingUp } from "lucide-react";
+import { Target, Lightbulb, Users, TrendingUp, Palette, Heart, Plane, CookingPot } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
+import paintingPhoto from "@/assets/painting.png";
 
 const strengths = [
 {
@@ -65,6 +66,41 @@ export function AboutSection() {
                   Currently seeking opportunities in <span className="text-foreground font-medium">Business Analytics, Product Analytics, and Strategy</span> where 
                   I can leverage data to drive measurable business outcomes.
                 </p>
+              </div>
+
+              <div className="mt-8">
+                <p className="text-primary font-medium mb-4">Beyond Work</p>
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href="https://www.instagram.com/vivaciouspaintings_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group/hobby flex items-center gap-3 px-4 py-3 rounded-xl glass glass-hover transition-all duration-300"
+                  >
+                    <div className="w-10 h-10 rounded-lg overflow-hidden border border-primary/20 flex-shrink-0">
+                      <img src={paintingPhoto} alt="My painting" className="w-full h-full object-cover" />
+                    </div>
+                    <div>
+                      <span className="text-foreground font-medium text-sm flex items-center gap-1.5">
+                        <Palette className="w-3.5 h-3.5 text-primary" /> Painting
+                      </span>
+                      <span className="text-muted-foreground text-xs">@vivaciouspaintings_</span>
+                    </div>
+                  </a>
+                  {[
+                    { icon: Heart, label: "Family" },
+                    { icon: Plane, label: "Travel" },
+                    { icon: CookingPot, label: "Cooking" },
+                  ].map((hobby) => (
+                    <div
+                      key={hobby.label}
+                      className="flex items-center gap-2 px-4 py-3 rounded-xl glass text-sm text-foreground font-medium"
+                    >
+                      <hobby.icon className="w-4 h-4 text-primary" />
+                      {hobby.label}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
