@@ -84,8 +84,8 @@ export function ExperienceSection() {
                   <div className="hidden md:flex absolute left-7 w-5 h-5 rounded-full bg-accent border-4 border-background shadow-sm" style={{ top: "1.5rem" }} />
                   
                   <div className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300">
-                    {/* Mobile: logo above text */}
-                    <div className="flex justify-center md:hidden py-2">
+                    {/* Mobile: logo left-aligned */}
+                    <div className="flex justify-start md:hidden py-2">
                       <img
                         src={exp.logo}
                         alt={`${exp.company} logo`}
