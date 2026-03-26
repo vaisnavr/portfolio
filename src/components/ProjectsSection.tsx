@@ -261,7 +261,7 @@ function ProjectCard({
   return (
     <article
       ref={ref}
-      className={`group glass glass-hover rounded-2xl p-6 md:p-8 transition-all duration-500 ${
+      className={`group glass glass-hover rounded-2xl p-4 sm:p-6 md:p-8 transition-all duration-500 ${
         visible
           ? "animate-fade-in-up opacity-100"
           : "opacity-0 translate-y-8"
@@ -269,13 +269,14 @@ function ProjectCard({
       style={{ animationDelay: `${index * 0.1}s` }}
     >
       {/* Header */}
-      <div className="flex items-start justify-between mb-5">
+          {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-5">
         <div className="flex items-center gap-3 flex-1 min-w-0">
           <div className="w-10 h-10 rounded-xl bg-primary/15 flex items-center justify-center flex-shrink-0">
             <project.icon className="w-5 h-5 text-primary" />
           </div>
           <div className="min-w-0">
-            <h3 className="font-display text-lg font-semibold text-foreground leading-tight truncate">
+            <h3 className="font-display text-base sm:text-lg font-semibold text-foreground leading-tight">
               {project.title}
             </h3>
             <p className="text-muted-foreground text-xs mt-0.5">
@@ -283,7 +284,7 @@ function ProjectCard({
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-2 flex-shrink-0 ml-3">
+        <div className="flex items-center gap-2 flex-shrink-0 ml-13 sm:ml-3">
           <Badge className="bg-emerald-500/15 text-emerald-400 border-emerald-500/30 text-xs">
             <CheckCircle2 className="w-3 h-3 mr-1" />
             {project.status}
@@ -418,13 +419,13 @@ export function ProjectsSection() {
           </div>
 
           {/* Quick Jump Filter */}
-          <div className="flex justify-center mb-12">
+          <div className="flex justify-center mb-12 overflow-x-auto">
             <div className="inline-flex glass rounded-xl p-1 gap-1">
               {categories.map((cat) => (
                 <button
                   key={cat.key}
                   onClick={() => setFilter(cat.key)}
-                  className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                     filter === cat.key
                       ? "bg-primary text-primary-foreground shadow-glow"
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"

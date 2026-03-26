@@ -85,8 +85,8 @@ export function EducationSection() {
                 key={index}
                 className="p-8 rounded-2xl bg-card border border-border hover:shadow-card-hover transition-all duration-300 group"
               >
-                {/* Mobile: logo above text */}
-                <div className="flex justify-center md:hidden py-2">
+                {/* Mobile: logo left-aligned */}
+                <div className="flex justify-start md:hidden py-2">
                   <img
                     src={edu.logo}
                     alt={`${edu.school} logo`}

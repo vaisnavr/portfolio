@@ -146,6 +146,15 @@ alt="Vaisnav Roy, Business Analytics Professional"
               <p className="text-muted-foreground text-xs mt-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.7s" }}>
                 Pick any, they all lead somewhere interesting.
               </p>
+
+              <div className="mt-6 lg:hidden animate-fade-in-up opacity-0" style={{ animationDelay: "0.8s" }}>
+                <Button variant="hero" size="lg" asChild>
+                  <a href="#contact">
+                    <Mail size={18} />
+                    Get in Touch
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
