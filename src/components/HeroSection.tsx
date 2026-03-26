@@ -46,32 +46,45 @@ export function HeroSection() {
     setPhase("dissolving");
   }, [phase]);
 
+  const goToProfile = useCallback(() => {
+    setBridgeVisible(false);
+    setTimeout(() => {
+      setPhase("profile");
+      toast({
+        title: "Great instinct.",
+        description: "Welcome to my portfolio."
+      });
+      setTimeout(() => setStatsVisible(true), 400);
+    }, 600);
+  }, []);
+
+  // Lock scrolling during bridge phase
+  useEffect(() => {
+    if (phase === "bridge") {
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = ""; };
+    }
+  }, [phase]);
+
   useEffect(() => {
     if (phase === "dissolving") {
+      document.body.style.overflow = "hidden";
       const timer = setTimeout(() => {
         setPhase("bridge");
         setBridgeVisible(true);
       }, 900);
-      return () => clearTimeout(timer);
+      return () => { clearTimeout(timer); document.body.style.overflow = ""; };
     }
   }, [phase]);
 
   useEffect(() => {
     if (phase === "bridge") {
       const timer = setTimeout(() => {
-        setBridgeVisible(false);
-        setTimeout(() => {
-          setPhase("profile");
-          toast({
-            title: "Great instinct.",
-            description: "Welcome to my portfolio."
-          });
-          setTimeout(() => setStatsVisible(true), 400);
-        }, 600);
-      }, 7000);
+        goToProfile();
+      }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [phase]);
+  }, [phase, goToProfile]);
 
   // ── Quiz Phase ──
   if (phase === "quiz" || phase === "dissolving") {
