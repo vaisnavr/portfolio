@@ -46,32 +46,45 @@ export function HeroSection() {
     setPhase("dissolving");
   }, [phase]);
 
+  const goToProfile = useCallback(() => {
+    setBridgeVisible(false);
+    setTimeout(() => {
+      setPhase("profile");
+      toast({
+        title: "Great instinct.",
+        description: "Welcome to my portfolio."
+      });
+      setTimeout(() => setStatsVisible(true), 400);
+    }, 600);
+  }, []);
+
+  // Lock scrolling during bridge phase
+  useEffect(() => {
+    if (phase === "bridge") {
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = ""; };
+    }
+  }, [phase]);
+
   useEffect(() => {
     if (phase === "dissolving") {
+      document.body.style.overflow = "hidden";
       const timer = setTimeout(() => {
         setPhase("bridge");
         setBridgeVisible(true);
       }, 900);
-      return () => clearTimeout(timer);
+      return () => { clearTimeout(timer); document.body.style.overflow = ""; };
     }
   }, [phase]);
 
   useEffect(() => {
     if (phase === "bridge") {
       const timer = setTimeout(() => {
-        setBridgeVisible(false);
-        setTimeout(() => {
-          setPhase("profile");
-          toast({
-            title: "Great instinct.",
-            description: "Welcome to my portfolio."
-          });
-          setTimeout(() => setStatsVisible(true), 400);
-        }, 600);
-      }, 7000);
+        goToProfile();
+      }, 5000);
       return () => clearTimeout(timer);
     }
-  }, [phase]);
+  }, [phase, goToProfile]);
 
   // ── Quiz Phase ──
   if (phase === "quiz" || phase === "dissolving") {
@@ -204,9 +217,12 @@ alt="Vaisnav Roy, Business Analytics Professional"
           </p>
 
           <div className="flex justify-center animate-fade-in-up opacity-0" style={{ animationDelay: "1.8s", animationFillMode: "forwards" }}>
-            <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center">
+            <button
+              onClick={goToProfile}
+              className="w-12 h-12 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center hover:bg-primary/20 hover:scale-110 transition-all cursor-pointer"
+            >
               <ArrowRight size={20} className="text-primary animate-pulse" />
-            </div>
+            </button>
           </div>
         </div>
       </section>
