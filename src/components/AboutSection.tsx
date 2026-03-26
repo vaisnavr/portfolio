@@ -36,7 +36,7 @@ export function AboutSection() {
                   <div className="w-48 h-48 rounded-2xl overflow-hidden border-2 border-primary/20 shadow-xl">
                     <img
                       src={profilePhoto}
-                      alt="Vaisnav Roy — Business Analytics Professional"
+                      alt="Vaisnav Roy, Business Analytics Professional"
                       className="w-full h-full object-cover" />
                     
                   </div>
@@ -57,7 +57,7 @@ export function AboutSection() {
                   <span className="text-foreground font-medium"> Digital Marketing, SaaS, and Fintech</span>.
                 </p>
                 <p>
-                  I don't just analyze data — I drive the cross-functional adoption that delivers results. From architecting 
+                  I don't just analyze data, I drive the cross-functional adoption that delivers results. From architecting 
                   analytics pipelines in Snowflake to deploying AI-driven compliance engines for Fortune 500 clients, 
                   I bridge the gap between technical execution and strategic impact.
                 </p>

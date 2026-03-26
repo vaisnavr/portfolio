@@ -100,7 +100,7 @@ export function HeroSection() {
                 <div className="relative w-72 h-80 md:w-80 md:h-[22rem] lg:w-[22rem] lg:h-[26rem] rounded-2xl overflow-hidden border border-primary/30 shadow-2xl">
                   <img
                     src={heroProfile}
-                    alt="Vaisnav Roy — Business Analytics Professional"
+alt="Vaisnav Roy, Business Analytics Professional"
                     className="w-full h-full object-cover object-top" />
                   
                 </div>
@@ -144,7 +144,7 @@ export function HeroSection() {
               </div>
 
               <p className="text-muted-foreground text-xs mt-8 animate-fade-in-up opacity-0" style={{ animationDelay: "0.7s" }}>
-                Pick any — they all lead somewhere interesting.
+                Pick any, they all lead somewhere interesting.
               </p>
             </div>
           </div>
@@ -190,7 +190,7 @@ export function HeroSection() {
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed mb-8 animate-fade-in-up opacity-0" style={{ animationDelay: "1.4s", animationFillMode: "forwards" }}>
-            You saw three paths — but they're not separate choices.{" "}
+            You saw three paths, but they're not separate choices.{" "}
             <span className="text-foreground font-medium">I bridge the gap between all three.</span>
           </p>
 
@@ -269,7 +269,7 @@ export function HeroSection() {
               <div className="relative w-56 h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-2 border-primary/30 shadow-2xl ring-1 ring-primary/10">
                 <img
                   src={profilePhoto}
-                  alt="Vaisnav Roy — Business Analytics Professional"
+                  alt="Vaisnav Roy, Business Analytics Professional"
                   className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-2 -right-2 w-12 h-12 rounded-full bg-primary/15 border border-primary/25 flex items-center justify-center backdrop-blur-sm">
