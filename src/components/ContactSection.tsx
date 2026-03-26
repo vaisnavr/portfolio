@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Linkedin, Github, MapPin, Send, Download, Phone } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Send, Download, Phone, Calendar } from "lucide-react";
 
 export function ContactSection() {
   const { toast } = useToast();
@@ -149,6 +149,21 @@ export function ContactSection() {
                   <a href="/resume.pdf" download>
                     <Download size={18} />
                     Download PDF Resume
+                  </a>
+                </Button>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-accent/5 border border-accent/20">
+                <h3 className="font-display text-lg font-semibold text-foreground mb-2">
+                  Schedule a Meeting
+                </h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Book a time to chat about opportunities or collaboration.
+                </p>
+                <Button variant="hero" className="w-full" asChild>
+                  <a href="https://calendar.app.google/bLAsgbcWPspzKar4A" target="_blank" rel="noopener noreferrer">
+                    <Calendar size={18} />
+                    Book a Meeting
                   </a>
                 </Button>
               </div>
