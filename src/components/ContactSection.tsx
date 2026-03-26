@@ -18,12 +18,31 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you within 24 hours.",
-    });
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "02b3db4a-f2a2-406a-be4d-6f7a51f308a4",
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast({ title: "Error", description: "Something went wrong. Please try again.", variant: "destructive" });
+      }
+    } catch {
+      toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
+    }
     setIsSubmitting(false);
   };
 
