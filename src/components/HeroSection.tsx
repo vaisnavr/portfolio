@@ -81,7 +81,7 @@ export function HeroSection() {
     if (phase === "bridge") {
       const timer = setTimeout(() => {
         goToProfile();
-      }, 5000);
+      }, 7000);
       return () => clearTimeout(timer);
     }
   }, [phase, goToProfile]);
