@@ -1,5 +1,6 @@
-import { Target, Lightbulb, Users, TrendingUp } from "lucide-react";
+import { Target, Lightbulb, Users, TrendingUp, Palette, Heart, Plane, CookingPot } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.png";
+import paintingPhoto from "@/assets/painting.png";
 
 const strengths = [
 {
