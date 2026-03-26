@@ -217,9 +217,12 @@ alt="Vaisnav Roy, Business Analytics Professional"
           </p>
 
           <div className="flex justify-center animate-fade-in-up opacity-0" style={{ animationDelay: "1.8s", animationFillMode: "forwards" }}>
-            <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center">
+            <button
+              onClick={goToProfile}
+              className="w-12 h-12 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center hover:bg-primary/20 hover:scale-110 transition-all cursor-pointer"
+            >
               <ArrowRight size={20} className="text-primary animate-pulse" />
-            </div>
+            </button>
           </div>
         </div>
       </section>
