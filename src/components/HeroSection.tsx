@@ -81,7 +81,7 @@ export function HeroSection() {
     if (phase === "bridge") {
       const timer = setTimeout(() => {
         goToProfile();
-      }, 7000);
+      }, 4000);
       return () => clearTimeout(timer);
     }
   }, [phase, goToProfile]);
@@ -160,13 +160,19 @@ alt="Vaisnav Roy, Business Analytics Professional"
                 Pick any, they all lead somewhere interesting.
               </p>
 
-              <div className="mt-6 lg:hidden animate-fade-in-up opacity-0" style={{ animationDelay: "0.8s" }}>
-                <Button variant="hero" size="lg" asChild>
-                  <a href="#contact">
-                    <Mail size={18} />
-                    Get in Touch
-                  </a>
+              <div className="flex flex-col sm:flex-row items-center gap-3 mt-6 animate-fade-in-up opacity-0" style={{ animationDelay: "0.8s" }}>
+                <Button variant="hero-outline" size="lg" onClick={() => { setPhase("dissolving"); setTimeout(() => { setPhase("profile"); toast({ title: "Welcome!", description: "Explore my portfolio." }); setTimeout(() => setStatsVisible(true), 400); }, 900); }}>
+                  <ArrowRight size={18} />
+                  View Portfolio
                 </Button>
+                <div className="lg:hidden">
+                  <Button variant="hero" size="lg" asChild>
+                    <a href="#contact">
+                      <Mail size={18} />
+                      Get in Touch
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -216,12 +222,13 @@ alt="Vaisnav Roy, Business Analytics Professional"
             <span className="text-foreground font-medium">I bridge the gap between all three.</span>
           </p>
 
-          <div className="flex justify-center animate-fade-in-up opacity-0" style={{ animationDelay: "1.8s", animationFillMode: "forwards" }}>
+          <div className="flex flex-col items-center gap-3 animate-fade-in-up opacity-0" style={{ animationDelay: "1.8s", animationFillMode: "forwards" }}>
             <button
               onClick={goToProfile}
-              className="w-12 h-12 rounded-full bg-primary/10 border border-primary/25 flex items-center justify-center hover:bg-primary/20 hover:scale-110 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 border border-primary/25 text-primary font-medium hover:bg-primary/20 hover:scale-105 transition-all cursor-pointer"
             >
-              <ArrowRight size={20} className="text-primary animate-pulse" />
+              Skip Intro
+              <ArrowRight size={18} className="animate-pulse" />
             </button>
           </div>
         </div>
